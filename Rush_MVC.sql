@@ -16,10 +16,10 @@ USE `blog_mia`;
 
 -- --------------------------------------------------------
 --
--- Table structure for table `news`
+-- Table structure for table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `news` (
+CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
@@ -31,6 +31,22 @@ CREATE TABLE IF NOT EXISTS `news` (
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   KEY `categories_id` (`categories_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `articles_id` int(11) NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edit_date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `author_id` (`author_id`),
+  KEY `articles_id` (`articles_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------

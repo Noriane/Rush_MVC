@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$basePath = __DIR__;
 	include_once($basePath.'/Config/config.php');
@@ -22,7 +22,7 @@
 	        $res = $this->_pdo->prepare($this->_query);
 	        $check = $res->execute($this->_variable);
 	        if (!$check)//La requete n'est pas passée
-	        {	
+	        {
 	        	return (-1);
 	        }
 	        else if($fetch)
@@ -35,8 +35,7 @@
 
         private function connect_db()
 	    {
-            $pdo = new PDO("mysql:host=HOST;port=PORT;dbname=DB", USERNAME, PASSWORD);
-            return($pdo);
+            return (new PDO("mysql:host=HOST;port=PORT;dbname=DB", USERNAME, PASSWORD));
 	    }
 	    public function getErrors()
 	    {
