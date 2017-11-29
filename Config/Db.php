@@ -1,7 +1,5 @@
 <?php
-
-	$basePath = __DIR__;
-	include_once($basePath.'/Config/config.php');
+	// include_once($basePath.'/Config/config.php');
 
 	class Db
 	{
