@@ -5,7 +5,7 @@
         private $_path;
         private $_callable;
         private $_matches = [];
-				private $_params = [];
+		private $_params = [];
 
         public function __construct($path, $callable)
         {
@@ -26,11 +26,11 @@
             return true;
         }
 
-				public function with($param, $regex)
-				{
-					$this->_params[$param] = str_replace('(','(?',$regex);
-					return $this;
-				}
+		public function with($param, $regex)
+		{
+			$this->_params[$param] = str_replace('(','(?',$regex);
+			return $this;
+		}
 
         private function paramMatch($match)
         {
