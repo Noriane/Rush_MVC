@@ -16,7 +16,7 @@
         }
 
         //retourn l'instance en cours ou en crée une
-        public static function getInstance($file)
+        public static function getInstance()
         {
             if (is_null(self::$_instance)) {
                 self::$_instance = new Db();
