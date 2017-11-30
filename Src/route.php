@@ -14,9 +14,13 @@
 		public function match($url)
 		{
 			$url = trim($url, '/');
-			$path = preg_replace('#:([\w]+)#', '([^\]+)', $this->_path);
+			$path = preg_replace('#:([\w]+)#', '([^/]+)', $this->_path);
 			$regex = "#^$path$#i";
-			if(preg_match($))
+			if(!preg_match($regex, $url, $matches))
+			{
+				return false;
+			}
+			var_dump($matches);
 		}
 	    
     }

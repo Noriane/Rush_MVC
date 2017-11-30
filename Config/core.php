@@ -1,5 +1,5 @@
 <?php
-    $basePath = __DIR__;
+
  class Framework
  {
      public static function run()
@@ -17,7 +17,8 @@
          require $basePath."/Models/Article.php";
          require $basePath."/Src/log.php";
          require $basePath."/Src/session.php";
-         require $basePath."/Src/router.php";
+         require $basePath."/Src/Router.php";
+         require $basePath."/Src/Route.php";
 
          // Load configuration file
          include $basePath."/Config/config.php";

@@ -1,5 +1,8 @@
 <?php 
+	$basePath = __DIR__."/../";
 
+	require $basePath.'Config/core.php';
+	$framework = new Framework();
 	
 	$router = new Router($_GET['url']);
 
