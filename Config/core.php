@@ -2,7 +2,7 @@
 
  class Framework
  {
-     public static function run()
+     public static function run2()
      {
          echo "run()";
          self::init();
