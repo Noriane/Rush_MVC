@@ -44,7 +44,9 @@ class Router
                 return $route->call();
             }
         }
-        throw new Exception("No matching routes", 1);
+        echo "404 not found";
+        header('HTTP/1.1 404 Not Found');
+        //require_once($basePath.'/Controllers/404Controller.php');
     }
 
     public function url($name, $params = [])
