@@ -5,6 +5,7 @@
      public static function run()
      {
          echo "run()";
+         self::init();
      }
 
      private static function init()
