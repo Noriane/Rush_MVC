@@ -1,7 +1,5 @@
 <?php
 
-    include_once($basePath.'/Config/Db.php');
-
     class Article
     {
         private $_article;
@@ -62,7 +60,7 @@
                 $query->SQLquery(false);
 
             } elseif ($description != null) {
-							
+
                 $queryArticlesDesc = "UPDATE articles SET description = (?), edition_date = NOW() WHERE id =(?)" ;
                 $variable = array($description, $id);
                 $query = new Db($queryArticlesDesc, $variable);

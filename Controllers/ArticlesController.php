@@ -1,26 +1,26 @@
-<?php 
+<?php
 
-	include_once($basePath.'/Models/Article.php');
+	//include_once($basePath.'/Models/Article.php');
 
-	class TaskController
+	class articleController
 	{
 		private $_title;
 		private $_description = NULL;
-		private $_tasks = array();
+		private $_articles = array();
 
 		public function __construct($url, $get, $post)
 		{
-			$task = new Task();
-			$this->_tasks = $task->get_tasks();
+			$article = new article();
+			$this->_articles = $article->get_articles();
 
-			$tasks =  array();
-			foreach ($this->_tasks as $key => $task) 
+			$articles =  array();
+			foreach ($this->_articles as $key => $article)
 			{
-				$tasks[$key]['title'] = htmlspecialchars($task['title']);
-				$tasks[$key]['description'] = nl2br((htmlspecialchars($task['description'])));
+				$articles[$key]['title'] = htmlspecialchars($article['title']);
+				$articles[$key]['description'] = nl2br((htmlspecialchars($article['description'])));
 			}
-			$this->_tasks = $tasks;
-		
+			$this->_articles = $articles;
+
 			if (!isset($post['title']) || $post['title'] == "")
 			{
 				echo "Title is missing";
@@ -29,9 +29,9 @@
 			$this->check_data($post['title'], isset($post['description']) ? $post['description'] : NULL);
 		}
 
-		public function get_tasks()
+		public function get_articles()
 		{
-			return $this->_tasks;
+			return $this->_articles;
 		}
 
 		public function check_data($title, $description = NULL)
@@ -39,16 +39,16 @@
 			if(!empty($title))
 			{
 				$this->_title = $this->secure_data($title);
-				
+
 				if (!empty($description))
 				{
 					$this->_description = $this->secure_data($description);
 				}
 
-				$newTask = new Task();
-				$newTask->post_task($this->_title, $this->_description);
+				$newarticle = new article();
+				$newarticle->post_article($this->_title, $this->_description);
 
-				if ($newTask->post_task($title, $description) == -1)
+				if ($newarticle->post_article($title, $description) == -1)
 				{
 					//Erreur
 				}
@@ -65,9 +65,8 @@
 	}
 
 
-	$task = new TaskController($path, $_GET, $_POST);
+	// $article = new articleController($path, $_GET, $_POST);
+	//
+	// $articles = $article->get_articles();
 
-	$tasks = $task->get_tasks();
-	
-	include_once($basePath.'/Views/tasks.php');
-	
+	include_once($basePath.'Views/Articles/action.html');

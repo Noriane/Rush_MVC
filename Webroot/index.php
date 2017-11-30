@@ -2,7 +2,7 @@
     $basePath = __DIR__."/../";
 
     require $basePath.'Config/core.php';
-    
+
     Framework::run();
 
     $router = new Router($_GET['url']);
@@ -12,22 +12,22 @@
     });
 
     $router->get('/articles/:id', function ($id) {
-        echo "affiche l'article".$id;
+        echo "affiche l'article ".$id;
     });
 
-    $router->get('/admin', function ($id) {
+    $router->get('/admin', function () {
         echo "Page admin";
     });
 
-    $router->get('/writer', function ($id) {
+    $router->get('/writer', function () {
         echo "Page writer";
     });
 
-    $router->get('/login', function ($id) {
+    $router->get('/login', function () {
         echo "Page login";
     });
 
-    $router->get('/logout', function ($id) {
+    $router->get('/logout', function () {
         echo "Page logout";
     });
 
