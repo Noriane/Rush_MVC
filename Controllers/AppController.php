@@ -2,30 +2,51 @@
 
 abstract class AppController
 {
-	protected $_model;
-	protected $_file;
-	protected $_params = [];
+    protected $_model;
+    protected $_file;
+    protected $_params = [];
+		private static $_instance = null;
 
-	private function __construct()
-	{
-		# code...
-	}
+    protected function __construct($model, $file = null)
+    {
+        $this->loadModel($model);
+				$this->_file = $file;
+    }
 
-	public function loadModel($model)
-	{
-		$this->_model = new $model();
-	}
+		//retourn l'instance en cours ou en crée une
+		abstract static function getInstance();
+		// {
+		// 		if (is_null(self::$_instance)) {
+		// 				self::$_instance = new AppController();
+		// 		}
+		// 		return self::$_instance;
+		// }
 
-	public function beforeRender();
+    protected function loadModel($model)
+    {
+        $this->_model = new $model();
+    }
 
-	public function render($file=null)
-	{
-		$this->_file = new View($file);
-	}
+    abstract protected function beforeRender();
 
-	protected function redirect($url)
-	{
-		
-	}
+    protected function render()
+    {
+        $this->_file = new View($this->_file, $this->_params);
+        $this->_file->run();
+    }
+
+    public function run()
+    {
+        $this->beforeRender();
+        $this->render();
+    }
+
+    protected function redirect()
+    {
+			$router = new Router();
+
+			$router->get('/', function () {
+			    echo "tous les articles";
+			});
+    }
 }
-?>
