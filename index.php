@@ -27,10 +27,12 @@
 	{
 		echo "Page login";
 	});
-	
+
 	$router->get('/logout', function($id)
 	{
 		echo "Page logout";
 	});
+
+	$router->run();
 
 ?>
