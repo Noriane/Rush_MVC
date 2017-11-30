@@ -69,4 +69,4 @@
 	//
 	// $articles = $article->get_articles();
 
-	include_once($basePath.'Views/Articles/action.html');
+	//include_once($basePath.'Views/Articles/action.html');

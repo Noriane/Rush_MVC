@@ -24,6 +24,8 @@
             } elseif ($fetch) {
                 $result = $res->fetchAll();
                 return($result);
+            }else {
+              return $res;
             }
             //return $this->_pdo->lastInsertId();
         }
