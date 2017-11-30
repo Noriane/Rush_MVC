@@ -5,13 +5,32 @@
     {
         private $_query;
         private $_pdo;
-        private $_variable;
+        private $_variable = [];
+        private static $_instance = null;
 
-        public function __construct($query, $variable = array())
+        //construct privée car singleton
+        private function __construct()
         {
             $this->_pdo = $this->connect_db();
             $this->_pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
+        }
+
+        //retourn l'instance en cours ou en crée une
+        public static function getInstance($file)
+        {
+            if (is_null(self::$_instance)) {
+                self::$_instance = new Db();
+            }
+            return self::$_instance;
+        }
+
+        public function setQuery($query)
+        {
             $this->_query = $query;
+        }
+
+        public function setVariable($variable)
+        {
             $this->_variable = $variable;
         }
 
@@ -24,17 +43,17 @@
             } elseif ($fetch) {
                 $result = $res->fetchAll();
                 return($result);
-            }else {
-              return $res;
+            } else {
+                return $res;
             }
             //return $this->_pdo->lastInsertId();
         }
 
         private function connect_db()
         {
-					$host=HOST;
-					$port=PORT;
-					$db = DB;
+            $host=HOST;
+            $port=PORT;
+            $db = DB;
             return (new PDO("mysql:host=$host;port=$port;dbname=$db", USERNAME, PASSWORD));
         }
 

@@ -21,8 +21,7 @@
          require $basePath."/Src/Router.php";
          require $basePath."/Src/session.php";
          require $basePath."/Src/log.php";
-         require $basePath."/Models/Article.php";
-         require $basePath."/Controllers/Dispatcher.php";
+         require $basePath."/Dispatcher.php";
 
          // Start session
          session_start();
