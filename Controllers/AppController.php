@@ -7,14 +7,14 @@ abstract class AppController
     protected $_params = [];
 		private static $_instance = null;
 
-    protected function __construct($model, $file = null)
+    protected function __construct($model, $file)
     {
         $this->loadModel($model);
 				$this->_file = $file;
     }
 
 		//retourn l'instance en cours ou en crée une
-		abstract static function getInstance();
+		abstract static function getInstance($model, $file = null);
 		// {
 		// 		if (is_null(self::$_instance)) {
 		// 				self::$_instance = new AppController();
