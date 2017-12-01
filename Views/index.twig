@@ -27,29 +27,29 @@
 			    margin: 5em 0em 0em;
 			    padding: 5em 0em;
 			  }
+			  article
+			  {
+			  	margin-top:100px;
+			  }
   		</style>
 	</head>
 
 	<body>
-		Vous venez de créer votre premier template avec {{ moteur_name }} !
+
 
 		{% include 'Includes/header.html' %}
 
 		<article>
+		
 			<div class="ui raised very padded text container segment">
 				<div>
-					<img src="#">
+					<img src="{{articles[0]['img']}}">
 				</div>
 				<div>
-				    <h2 class="ui header">Artcile's Title</h2>
-				    <p><span>Autor Name</span> | <span>Creation Date</span> | <span>Edition Date</span></p>
-				    <h3>category name</h3>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				    proident, sunt in culpa qui officia deserunt mollit anim id est laborum...</p>
+				    <h2 class="ui header">{{articles[0]['title']}}</h2>
+				    <p><span>{{articles[0]['username']}}</span> | <span>{{articles[0]['create_date']}}</span> | <span>{{articles[0]['edit_date']}}</span></p>
+				    <h3>{{articles[0]['cat']}}</h3>
+				    <p>{{articles[0]['content']}}</p>
 				</div>
 				<div>
 					<div>
@@ -57,7 +57,7 @@
 						<p>Tag2</p>
 						<p>Tag3</p>
 					</div>
-					<p>Comments (0)</p>
+					<p><span>{{articles['nb_comment']}} </span>Comments</p>
 				</div>
 			 </div>
 		</article>

@@ -8,5 +8,8 @@ class View
 
         $template = $twig->loadTemplate($file);
         echo $template->render($params); 
+        echo "<pre>";
+        var_dump($params);
+        echo "</pre>";
     }
 }
