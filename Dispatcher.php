@@ -31,9 +31,12 @@ $router->get('/writer', function () {
     echo "Page writer";
 });
 
-
 $router->get('/login', function () {
-    echo "Page login";
+    require PATH."/Models/Login.php";
+    require PATH."/Controllers/LoginController.php";
+    require PATH."/Views/View.php";
+
+    LoginController::getInstance("LoginModel", "login.twig")->run();
 });
 
 
