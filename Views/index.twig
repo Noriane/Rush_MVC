@@ -38,19 +38,16 @@
 
 
 		{% include 'Includes/header.html' %}
-		<pre>
-			 {{dump(articles|length)}}
-		</pre>
 
 		<div>
 
 			{% for i in 0..(articles|length - 1) %}
-			
+
 			<article>
-			
+
 				<div class="ui raised very padded text container segment">
 					<div>
-						<img src='{{articles[i]['url_img']}}'>
+						<img src="{{articles[i]['url_img']}}">
 					</div>
 					<div>
 					    <h2 class="ui header">{{articles[i]['title']}}</h2>
@@ -64,7 +61,7 @@
 							<p>Tag2</p>
 							<p>Tag3</p>
 						</div>
-						<p><span>{{articles['nb_comment']}} </span>Comments</p>
+						<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
 					</div>
 				 </div>
 			</article>
