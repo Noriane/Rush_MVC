@@ -7,7 +7,8 @@
 
     //Framework::run();
 
-    $template = $twig->loadTemplate('index.twig');
+    //$template = $twig->loadTemplate('index.twig');
+    $template = $twig->loadTemplate('article.twig');
     	echo $template->render(array(
 		'moteur_name' => 'Twig'
     )); 

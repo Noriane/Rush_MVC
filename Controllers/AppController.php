@@ -40,13 +40,13 @@ abstract class AppController
     protected function render()
     {
         $this->_file = new View($this->_file, $this->_params);
-        $this->_file->run();
+        //$this->_file->run();
     }
 
     public function run()
     {
         $this->beforeRender();
-        $this->renderView();
+        $this->render();
     }
 
     protected function redirect()

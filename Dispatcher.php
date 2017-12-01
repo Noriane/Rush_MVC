@@ -21,6 +21,7 @@ $router->get('/writer', function () {
 $router->get('/login', function () {
     echo "Page login";
 });
+
 //$router->get('/login', 'login.php');
 
 $router->get('/logout', function () {
