@@ -6,7 +6,7 @@
     require $basePath.'Views/Includes/configTwig.php';
 
     //Framework::run();
-
+    
     $template = $twig->loadTemplate('index.twig');
     //$template = $twig->loadTemplate('article.twig');
     	echo $template->render(array(
