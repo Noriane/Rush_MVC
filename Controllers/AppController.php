@@ -10,6 +10,7 @@ abstract class AppController
 
     protected function __construct($model, $file)
     {
+
         $this->loadModel($model);
         $this->user_id();
         $this->_file = $file;

@@ -26,16 +26,16 @@ class LoginController extends AppController
             $_SESSION['message'] =  "<p class='error'>Incorrect email or password</p>";
             return FALSE;
         }
-        return $this->check_datas();
+        return $this->checkDatas();
     }
 
     //Vérifie si l'email existe déjà en bdd
-    private function check_datas()
+    private function checkDatas()
     {
         $email = secure_input($_POST['email']);
         $password = secure_input($_POST['password']);
         
-        $this->_datasUser = $this->get_datas_user();
+        $this->_datasUser = $this->_model->get_datas_user();
 
         if ($email == $this->_datasUser['email']) 
         {
@@ -51,7 +51,7 @@ class LoginController extends AppController
         }
     }
 
-    //Verifie le password match
+    //Verifie si le password match
     private function match_pwd($password, $id)
     {
         $password_field = $_POST['password'];
@@ -67,7 +67,7 @@ class LoginController extends AppController
             return $this->redirect();
         }else
         {
-            $_SESSION['message'] = "<p class='error'>Incorrect email/password</p>";  
+            $_SESSION['message'] = "<p class='error'>Passwords don't match</p>";  
             return FALSE;
         }
     }

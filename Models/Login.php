@@ -7,5 +7,6 @@ class LoginModel extends AModel
         $sql = "SELECT email, password, id FROM users WHERE email='$email'";
         $this->_connect->setQuery($sql);
         $res = $this->_connect->SQLquery();
+        return $res;
     }
 }
