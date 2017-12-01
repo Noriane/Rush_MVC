@@ -50,8 +50,14 @@ class AdminController extends AppController
         $input=[];
         foreach ($_POST['add_user'] as $key => $value) {
             $input[$key] = $this->secure_input($value);
-            $this->_model->add_user($input);
         }
+        if ($input['password'] == $input['password_confirm'])
+          {
+            $input['password'] = password_hash($input['password'],PASSWORD_DEFAULT);
+            $this->_model->add_user($input);
+          }else {
+            $_SESSION['message'] = "<p class='error'> password not match </p>";
+          }
     }
 
     private function modif_user()
@@ -59,8 +65,8 @@ class AdminController extends AppController
         $input=[];
         foreach ($_POST['add_user'] as $key => $value) {
             $input[$key] = $this->secure_input($value);
-            $this->_model->modif_user($input);
         }
+        $this->_model->modif_user($input);
     }
 
     private function delete_user()
