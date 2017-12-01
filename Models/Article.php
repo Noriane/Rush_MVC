@@ -4,7 +4,7 @@ class ArticleModel extends AModel
 {
     public function article($id)
     {
-        $sql= "SELECT articles.id, title, content, users.username, categories.name as 'cat', tag_id, url_img, articles.create_date, articles.edit_date FROM articles INNER JOIN users ON articles.author_id = users.id INNER JOIN categories ON articles.categories_id = categories.id WHERE articles.id = '$id'";
+        $sql= "SELECT articles.id, title, content, users.username, categories.name as 'cat', tag_id, CONCAT('Webroot/Img/',url_img) as 'url_img', articles.create_date, articles.edit_date FROM articles INNER JOIN users ON articles.author_id = users.id INNER JOIN categories ON articles.categories_id = categories.id WHERE articles.id = '$id'";
 
         $this->_connect->setQuery($sql);
         return $this->_connect->SQLquery(false);

@@ -1,5 +1,4 @@
 <?php
-require_once('./AppController.php');
 
 class ArticleController extends AppController
 {
@@ -14,7 +13,7 @@ class ArticleController extends AppController
 
     protected function beforeRender()
     {
-        $id = $_GET['id'];
+        global $id;
 
         $this->_params['data'] = $this->_model->article($id);
 
@@ -27,7 +26,7 @@ class ArticleController extends AppController
 
         $this->_params['data']= null;
 
-        if ($this->_params['article']['nb_comment'] > 0) {
+        if (!empty($this->_params['article']['nb_comment'])) {
             $this->_params['comments'] = [];
 
             $this->_params['data'] = $this->_model->comments($id);
