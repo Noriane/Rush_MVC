@@ -1,5 +1,4 @@
 <?php
-include_once($basePath."/Config/Db.php");
 
 class Log
 {
@@ -19,18 +18,18 @@ class Log
 
     public function is_group()
     {
-        $req = "SELECT admin from users WHERE id = '$this->_id'";
+        $req = "SELECT group from users WHERE id = '$this->_id'";
         $this->_bdd->setQuery($req);
         $donne = $this->_bdd->SQLquery();
         if ($donne["group"] == "admin") {
             return "admin";
+        } elseif ($donne["group"] == "writer") {
+            return "writer";
         } else {
-            if ($donne["group"] == "writer") {
-                return "writer";
-            }
             return "user";
         }
     }
+
 
     public function this_name()
     {
@@ -40,13 +39,13 @@ class Log
         return $donne["username"];
     }
 
-    public function __sleep()
-    {
-        return array('_id');
-    }
-
-    public function __wakeup()
-    {
-        $this->connect();
-    }
+    // public function __sleep()
+    // {
+    //     return array('_id');
+    // }
+    //
+    // public function __wakeup()
+    // {
+    //     $this->connect();
+    // }
 }
