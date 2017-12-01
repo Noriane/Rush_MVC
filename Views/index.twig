@@ -43,8 +43,9 @@
 		</pre>
 
 		<div>
+
+			{% for i in 0..(articles|length - 1) %}
 			
-			 {% for i in 0..articles|length %}
 			<article>
 			
 				<div class="ui raised very padded text container segment">
@@ -67,6 +68,7 @@
 					</div>
 				 </div>
 			</article>
+
 			{% endfor %}
 
 		</div>
