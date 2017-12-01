@@ -1,6 +1,6 @@
 <?php
 
-class AccueilModel extends AModel
+class AdminModel extends AModel
 {
     public function users()
     {

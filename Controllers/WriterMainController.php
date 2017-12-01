@@ -51,6 +51,7 @@ class WriterMainController extends AppController
         foreach ($_POST['add_article'] as $key => $value) {
             $input[$key] = $this->secure_input($value);
         }
+        $input['author_id']= $_SESSION["log"];
         $this->_model->add_article($input);
     }
 
