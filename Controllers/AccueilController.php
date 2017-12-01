@@ -17,7 +17,7 @@ class AccueilController extends AppController
 
         $this->_params['articles']=[];
 
-        while ($data = $this->_params['data']->fetch()) {
+        while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
             array_push($this->_params['articles'],$data);
             $this->_params['articles']['nb_comment']= $this->_model->nb_comment($data['id']);
         }
