@@ -10,4 +10,4 @@
     $template = $twig->loadTemplate('index.twig');
     	echo $template->render(array(
 		'moteur_name' => 'Twig'
-    )); 
+    ));
