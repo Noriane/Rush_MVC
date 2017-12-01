@@ -15,7 +15,11 @@ $router->get('/', function () {
 });
 
 $router->get('/articles/:id', function ($id) {
-    echo "affiche l'article ".$id;
+  require PATH."/Models/Article.php";
+  require PATH."/Controllers/ArticleController.php";
+  require PATH."/Views/View.php";
+
+  ArticleController::getInstance("ArticleModel", "article.twig")->run();
 });
 
 $router->get('/admin', function () {
