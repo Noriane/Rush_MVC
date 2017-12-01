@@ -7,6 +7,6 @@ class View
         include_once PATH.'/Views/Includes/configTwig.php';
 
         $template = $twig->loadTemplate($file);
-        echo $template->render($params);
+        echo $template->render($params); 
     }
 }

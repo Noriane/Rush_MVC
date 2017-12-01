@@ -13,6 +13,21 @@ class ArticleController extends AppController
     }
 
     protected function beforeRender(){
+      $id = $_GET['id'];
 
+      $this->_params['data'] = $this->_model->article($id);
+
+      $this->_params['article']=[];
+
+      while ($data = $this->_params['data']->fetch()) {
+          array_push($this->_params['article'],$data);
+          $this->_params['article']['nb_comment']= $this->_model->nb_comment($data['id']);
+      }
+
+      if ($data['id'] > 0) {
+
+      }
+
+      array_shift($this->_params);
     }
 }
