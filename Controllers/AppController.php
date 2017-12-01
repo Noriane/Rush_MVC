@@ -38,7 +38,7 @@ abstract class AppController
     public function run()
     {
         $this->beforeRender();
-        $this->render();
+        $this->renderView();
     }
 
     protected function redirect()

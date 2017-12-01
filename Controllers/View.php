@@ -1,6 +1,8 @@
 <?php
 class View
 {
+	protected $_file;
+	protected $_params = [];
 	public function __construct($file, $params)
 	{
 		$this->_file = $file;
@@ -11,8 +13,8 @@ class View
 	{
 		//global $twig;
 		//Twig
-		//$template = $twig->loadTemplate($file);
-		$template = $twig->loadTemplate('index.twig');
+		//$template = $twig->loadTemplate('index.twig');
+		$template = $twig->loadTemplate($file);
     	echo $template->render($this->$_params);
 	}
 }

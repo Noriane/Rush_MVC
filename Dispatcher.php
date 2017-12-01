@@ -17,9 +17,11 @@ $router->get('/writer', function () {
     echo "Page writer";
 });
 
+
 $router->get('/login', function () {
     echo "Page login";
 });
+//$router->get('/login', 'login.php');
 
 $router->get('/logout', function () {
     echo "Page logout";
