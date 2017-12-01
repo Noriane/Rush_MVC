@@ -4,5 +4,8 @@
 
     $loader = new Twig_Loader_Filesystem('../Views'); // Dossier contenant les templates
     $twig = new Twig_Environment($loader, array(
-      'cache' => false
-));
+      'cache' => false, 
+      'debug' => true
+	));
+
+	$twig->addExtension(new Twig_Extension_Debug());

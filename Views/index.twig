@@ -38,29 +38,39 @@
 
 
 		{% include 'Includes/header.html' %}
+		<pre>
+			 {{dump(articles|length)}}
+		</pre>
 
-		<article>
-		
-			<div class="ui raised very padded text container segment">
-				<div>
-					<img src='{{articles[0]['url_img']}}'>
-				</div>
-				<div>
-				    <h2 class="ui header">{{articles[0]['title']}}</h2>
-				    <p><span>{{articles[0]['username']}}</span> | <span>{{articles[0]['create_date']}}</span> | <span>{{articles[0]['edit_date']}}</span></p>
-				    <h3>{{articles[0]['cat']}}</h3>
-				    <p>{{articles[0]['content']}}</p>
-				</div>
-				<div>
+		<div>
+			
+			 {% for i in 0..articles|length %}
+			<article>
+			
+				<div class="ui raised very padded text container segment">
 					<div>
-						<p>Tag1</p>
-						<p>Tag2</p>
-						<p>Tag3</p>
+						<img src='{{articles[i]['url_img']}}'>
 					</div>
-					<p><span>{{articles['nb_comment']}} </span>Comments</p>
-				</div>
-			 </div>
-		</article>
+					<div>
+					    <h2 class="ui header">{{articles[i]['title']}}</h2>
+					    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
+					    <h3>{{articles[i]['cat']}}</h3>
+					    <p>{{articles[i]['content']}}</p>
+					</div>
+					<div>
+						<div>
+							<p>Tag1</p>
+							<p>Tag2</p>
+							<p>Tag3</p>
+						</div>
+						<p><span>{{articles['nb_comment']}} </span>Comments</p>
+					</div>
+				 </div>
+			</article>
+			{% endfor %}
+
+		</div>
+
 
 
 	</body>
