@@ -1,16 +1,12 @@
 <?php
 class View
 {
-	public function __construct($file, $params)
-	{
-		$template = $twig->loadTemplate($file);
-    	echo $template->render($this->$_params);
-	}
-	/*
-	public function renderView()
-	{
-		//global $twig;
-		//Twig
-		//$template = $twig->loadTemplate('index.twig');
-	}*/
+
+    public function __construct($file, $params)
+    {
+        global $twig;
+		var_dump($file);
+        $template = $twig->loadTemplate($file);
+        echo $template->render($this->$_params);
+    }
 }

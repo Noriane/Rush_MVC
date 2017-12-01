@@ -15,8 +15,10 @@ class AccueilController extends AppController
     {
         $this->_params['data'] = $this->_model->ten_articles();
 
+        $this->_params['articles']=[];
+
         while ($data = $this->_params['data']->fetch()) {
-            $this->_params['articles'].push($data);
+            array_push($this->_params['articles'],$data);
             $this->_params['articles']['nb_comment']= $this->_model->nb_comment($data['id']);
         }
     }

@@ -9,21 +9,19 @@
 
      private static function init()
      {
-         global $basePath;
-
          // Load configuration file
-         include $basePath."/Config/config.php";
+         include PATH."/Config/config.php";
 
 
          // Load core classes
-         require $basePath."/Config/Db.php";
-         require $basePath."/Src/Route.php";
-         require $basePath."/Src/Router.php";
-         require $basePath."/Src/session.php";
-         require $basePath."/Src/log.php";
-         require $basePath."/Controllers/AppController.php";
-         require $basePath."/Models/AModel.php";
-         require $basePath."/Dispatcher.php";
+         require PATH."/Config/Db.php";
+         require PATH."/Src/Route.php";
+         require PATH."/Src/Router.php";
+         require PATH."/Src/session.php";
+         require PATH."/Src/log.php";
+         require PATH."/Controllers/AppController.php";
+         require PATH."/Models/AModel.php";
+         require PATH."/Dispatcher.php";
 
          // Start session
          session_start();
