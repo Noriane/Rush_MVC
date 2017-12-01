@@ -40,7 +40,6 @@ abstract class AppController
     protected function render()
     {
         $this->_file = new View($this->_file, $this->_params);
-        //$this->_file->run();
     }
 
     public function run()

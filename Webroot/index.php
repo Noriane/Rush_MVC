@@ -11,4 +11,4 @@
     $template = $twig->loadTemplate('article.twig');
     	echo $template->render(array(
 		'moteur_name' => 'Twig'
-    )); 
+    ));
