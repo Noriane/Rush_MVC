@@ -13,10 +13,11 @@ class AccueilController extends AppController
 
     protected function beforeRender()
     {
-        $this->_params['articles'] = $this->_model->ten_articles();
+        $this->_params['data'] = $this->_model->ten_articles();
 
-        foreach ($this->_params['articles'] as $value) {
-            $this->_params['articles']['nb_comment']= $this->_model->nb_comment($this->_params['articles']['id']);
+        while ($data = $this->_params['data']->fetch()) {
+            $this->_params['articles'].push($data);
+            $this->_params['articles']['nb_comment']= $this->_model->nb_comment($data['id']);
         }
     }
 }
