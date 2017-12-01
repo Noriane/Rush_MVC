@@ -1,5 +1,4 @@
 <?php
-require_once('./AppController.php');
 
 class AdminController extends AppController
 {
@@ -12,7 +11,7 @@ class AdminController extends AppController
         return self::$_instance;
     }
 
-    protected function beforeRender(){
-
+    protected function beforeRender()
+    {
     }
 }

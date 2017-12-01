@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_GET['url'])) {
     $router = new Router($_GET['url']);
 } else {
@@ -15,11 +16,11 @@ $router->get('/', function () {
 });
 
 $router->get('/articles/:id', function ($id) {
-  require PATH."/Models/Article.php";
-  require PATH."/Controllers/ArticleController.php";
-  require PATH."/Views/View.php";
+    require PATH."/Models/Article.php";
+    require PATH."/Controllers/ArticleController.php";
+    require PATH."/Views/View.php";
 
-  ArticleController::getInstance("ArticleModel", "article.twig")->run();
+    ArticleController::getInstance("ArticleModel", "article.twig")->run();
 });
 
 $router->get('/admin', function () {
@@ -35,7 +36,6 @@ $router->get('/login', function () {
     echo "Page login";
 });
 
-//$router->get('/login', 'login.php');
 
 $router->get('/logout', function () {
     echo "Page logout";

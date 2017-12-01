@@ -53,7 +53,11 @@ abstract class AppController
         $router = new Router();
 
         $router->get('/', function () {
-            echo "tous les articles";
+            require PATH."/Models/Accueil.php";
+            require PATH."/Controllers/AccueilController.php";
+            require PATH."/Views/View.php";
+
+            AccueilController::getInstance("AccueilModel", "index.twig")->run();
         });
     }
 
