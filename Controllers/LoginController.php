@@ -3,6 +3,7 @@ require_once('./AppController.php');
 
 class LoginController extends AppController
 {
+    private $_datasUser = [];
     //retourn l'instance en cours ou en crée une
     public static function getInstance($model, $file = null)
     {
@@ -28,24 +29,20 @@ class LoginController extends AppController
         return $this->check_datas();
     }
 
-
     //Vérifie si l'email existe déjà en bdd
     private function check_datas()
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $sql = "SELECT email, password, id, ban FROM users WHERE email='$email'";
-        $this->_connect->setQuery($sql);
-        $res = $this->_connect->SQLquery();
+        $email = secure_input($_POST['email']);
+        $password = secure_input($_POST['password']);
+        
+        $this->_datasUser = $this->get_datas_user();
 
-        if ($email == $res['email']) 
+        if ($email == $this->_datasUser['email']) 
         {
-            if ($this->user_ban($res['ban']))
+            if ($this->_params['user']['ban'] == false)
             {
                 return $this->match_pwd($password, $id);
             }
-
-            return $this->redirect();
         }
         else
         {
@@ -63,17 +60,15 @@ class LoginController extends AppController
         if ($verif_pwd)
         {
             $_SESSION['log'] = $id;
-            //if (!empty($_POST['remember_me']))
             if ($_POST['remember_me'] == 'on')
             {
                 create_cookie('log', $id);
             }
-            return true;
+            return $this->redirect();
         }else
         {
             $_SESSION['message'] = "<p class='error'>Incorrect email/password</p>";  
             return FALSE;
         }
     }
-
 }
