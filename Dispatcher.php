@@ -9,10 +9,9 @@ if (!empty($_GET['url'])) {
 $router->get('/', function () {
     require PATH."/Models/Accueil.php";
     require PATH."/Controllers/AccueilController.php";
-    require PATH."/Controllers/View.php";
+    require PATH."/views/View.php";
 
-    $controller = AccueilController::getInstance("AccueilModel", PATH."Views/index.twig");
-    $controller->run();
+    AccueilController::getInstance("AccueilModel", "index.twig")->run();
 });
 
 $router->get('/articles/:id', function ($id) {

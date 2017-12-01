@@ -9,9 +9,11 @@
 
      private static function init()
      {
+         // Start session
+         session_start();
+
          // Load configuration file
          include PATH."/Config/config.php";
-
 
          // Load core classes
          require PATH."/Config/Db.php";
@@ -22,8 +24,5 @@
          require PATH."/Controllers/AppController.php";
          require PATH."/Models/AModel.php";
          require PATH."/Dispatcher.php";
-
-         // Start session
-         session_start();
      }
  }
