@@ -21,12 +21,12 @@ class Log
         $req = "SELECT group from users WHERE id = '$this->_id'";
         $this->_bdd->setQuery($req);
         $donne = $this->_bdd->SQLquery();
-        if ($donne["group"] == "admin") {
-            return "admin";
-        } elseif ($donne["group"] == "writer") {
-            return "writer";
+        if ($donne["group"] == "ADMIN") {
+            return "ADMIN";
+        } elseif ($donne["group"] == "WRITER") {
+            return "WRITER";
         } else {
-            return "user";
+            return "USER";
         }
     }
 
@@ -37,6 +37,18 @@ class Log
         $this->_bdd->setQuery($req);
         $donne = $this->_bdd->SQLquery();
         return $donne["username"];
+    }
+
+    public function is_ban()
+    {
+        $req= "SELECT ban FROM users WHERE id = '$this->_id'";
+        $this->_bdd->setQuery($req);
+        $donne = $this->_bdd->SQLquery();
+        if ($donne == 0) {
+            return "false";
+        } else {
+            return "true";
+        }
     }
 
     // public function __sleep()

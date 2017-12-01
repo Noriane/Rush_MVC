@@ -18,6 +18,7 @@ abstract class AppController
             $login = new log($this->_log);
             $this->_params['user']['group'] = $login->is_group();
             $this->_params['user']['name'] = $login->this_name();
+            $this->_params['user']['ban'] = $login->is_ban();
         }
     }
 
@@ -69,6 +70,7 @@ abstract class AppController
         return $data;
     }
 
+    //return id ou -1
     public function user_id()
     {
         if (isset($_COOKIE["log"])) {
