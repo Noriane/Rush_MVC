@@ -1,7 +1,5 @@
 <?php
 
-	//include_once($basePath.'/Models/Article.php');
-
 	class articleController
 	{
 		private $_title;

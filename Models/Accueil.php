@@ -12,9 +12,14 @@ class AccueilModel extends AModel
 
     public function nb_comment($id)
     {
-        $sql = "SELECT COUNT(id) FROM comments WHERE articles_id = '$id'";
+        $sql = "SELECT COUNT(id) as 'nb' FROM comments WHERE articles_id = '$id'";
         $this->_connect->setQuery($sql);
-        $ret = $this->_connect->SQLquery();
-        return $ret['COUNT(id)'];
+        $res = $this->_connect->SQLquery();
+        if (empty($res["nb"])) {
+            $ret =0;
+        } else {
+            $ret = $res["nb"];
+        }
+        return $ret;
     }
 }

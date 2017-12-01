@@ -1,8 +1,18 @@
 <?php
-$router = new Router($_GET['url']);
+if (!empty($_GET['url'])) {
+    $router = new Router($_GET['url']);
+} else {
+    $router = new Router("");
+}
+
 
 $router->get('/', function () {
-    echo "tous les articles";
+    require PATH."/Models/Accueil.php";
+    require PATH."/Controllers/AccueilController.php";
+    require PATH."/Controllers/View.php";
+
+    $controller = AccueilController::getInstance("AccueilModel", PATH."Views/index.twig");
+    $controller->run();
 });
 
 $router->get('/articles/:id', function ($id) {
