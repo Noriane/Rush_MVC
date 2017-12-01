@@ -3,6 +3,7 @@
 class LoginController extends AppController
 {
     private $_datasUser = [];
+
     //retourn l'instance en cours ou en crée une
     public static function getInstance($model, $file = null)
     {
@@ -14,6 +15,7 @@ class LoginController extends AppController
 
     protected function beforeRender()
     {
+        $this->_params['session'] = $_SESSION;
         $this->fieldForm();
     }
 
@@ -22,7 +24,7 @@ class LoginController extends AppController
     {
         if (empty($_POST['email']) || empty($_POST['password']))
         {
-            $_SESSION['message'] =  "<p class='error'>Incorrect email or password</p>";
+            $_SESSION['message'] =  "Incorrect email or password";
             return FALSE;
         }
         return $this->checkDatas();
@@ -45,7 +47,7 @@ class LoginController extends AppController
         }
         else
         {
-            $_SESSION['message'] = "<p class='error'>Incorrect email/password</p>";
+            $_SESSION['message'] = "Incorrect email/password";
             return FALSE;
         }
     }
@@ -66,7 +68,7 @@ class LoginController extends AppController
             return $this->redirect();
         }else
         {
-            $_SESSION['message'] = "<p class='error'>Passwords don't match</p>";  
+            $_SESSION['message'] = "Passwords don't match";  
             return FALSE;
         }
     }

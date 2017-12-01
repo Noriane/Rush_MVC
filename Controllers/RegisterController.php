@@ -14,16 +14,17 @@ class RegisterController extends AppController
 
     protected function beforeRender()
     {
+        $this->_params['session'] = $_SESSION;
         $this->checkDatas();
     }
 
     //Fais toutes les vérif sur la présence et la validité des champs du formulaire
     private function checkDatas()
     {
-        $username = secure_input($_POST['username']);
-        $email = secure_input($_POST['email']);
-        $password = secure_input($_POST['password']);
-        $password_confirm = secure_input($_POST['password_confirm']);
+        $username = $this->secure_input($_POST['username']);
+        $email = $this->secure_input($_POST['email']);
+        $password = $this->secure_input($_POST['password']);
+        $password_confirm = $this->secure_input($_POST['password_confirm']);
 
         $email_error = "Invalid email";
         $pwd_error = "Invalid password or password confirmation";
@@ -31,27 +32,27 @@ class RegisterController extends AppController
 
         if (empty($username))
         {
-            $_SESSION['message'] = "<p class='error'>$username_error</p>"; 
+            $_SESSION['message'] = $username_error; 
             return false;
         }
         if (empty($email) || (!filter_var($email, FILTER_VALIDATE_EMAIL)))
         {
-            $_SESSION['message'] = "<p class='error'>$email_error</p>";
+            $_SESSION['message'] = $email_error;
             return false;
         }
         if (empty($password))
         {
-            $_SESSION['message'] = "<p class='error'>$pwd_error</p>";
+            $_SESSION['message'] = $pwd_error;
             return false;
         }
         if (empty($password_confirm))
         {
-            $_SESSION['message'] = "<p class='error'>$pwd_error</p>";
+            $_SESSION['message'] = $pwd_error;
             return false;
         }
         if ($password != $password_confirm)
         {
-            $_SESSION['message'] = "<p class='error'>$pwd_error</p>";
+            $_SESSION['message'] = $pwd_error;
             return false;
         }
         return $this->uniqueEmail();

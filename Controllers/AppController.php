@@ -14,7 +14,7 @@ abstract class AppController
         $this->loadModel($model);
         $this->user_id();
         $this->_file = $file;
-
+        
         if ($this->_log >= 0) {
             $login = new log($this->_log);
             $this->_params['user']['group'] = $login->is_group();
@@ -79,7 +79,7 @@ abstract class AppController
             $this->_log= new Log($_SESSION["log"]);
         }
 
-        if (!empty($_SESSION) && (!isset($this->_log))) {
+        if (!empty($_SESSION) && (!isset($this->_log)) && isset($_SESSION['log'])) {
             $this->_log= new Log($_SESSION["log"]);
         } else {
             $this->_log = -1;

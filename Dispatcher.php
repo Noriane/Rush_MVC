@@ -39,6 +39,14 @@ $router->get('/login', function () {
     LoginController::getInstance("LoginModel", "login.twig")->run();
 });
 
+$router->get('/register', function () {
+    require PATH."/Models/Register.php";
+    require PATH."/Controllers/registerController.php";
+    require PATH."/Views/View.php";
+
+    RegisterController::getInstance("registerModel", "register.twig")->run();
+});
+
 
 $router->get('/logout', function () {
     echo "Page logout";
