@@ -12,22 +12,31 @@ class ArticleController extends AppController
         return self::$_instance;
     }
 
-    protected function beforeRender(){
-      $id = $_GET['id'];
+    protected function beforeRender()
+    {
+        $id = $_GET['id'];
 
-      $this->_params['data'] = $this->_model->article($id);
+        $this->_params['data'] = $this->_model->article($id);
 
-      $this->_params['article']=[];
+        $this->_params['article']=[];
 
-      while ($data = $this->_params['data']->fetch()) {
-          array_push($this->_params['article'],$data);
-          $this->_params['article']['nb_comment']= $this->_model->nb_comment($data['id']);
-      }
+        while ($data = $this->_params['data']->fetch()) {
+            array_push($this->_params['article'], $data);
+            $this->_params['article']['nb_comment']= $this->_model->nb_comment($data['id']);
+        }
 
-      if ($data['id'] > 0) {
+        $this->_params['data']= null;
 
-      }
+        if ($this->_params['article']['nb_comment'] > 0) {
+            $this->_params['comments'] = [];
 
-      array_shift($this->_params);
+            $this->_params['data'] = $this->_model->comments($id);
+
+            while ($data = $this->_params['data']->fetch()) {
+                array_push($this->_params['comments'], $data);
+            }
+        }
+
+        array_shift($this->_params);
     }
 }
