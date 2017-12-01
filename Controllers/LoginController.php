@@ -17,6 +17,7 @@ class LoginController extends AppController
         $this->fieldForm();
     }
 
+    //Vérifie si les 2 champs sont remplis
     private function fieldForm()
     {
         if (empty($_POST['email']) || empty($_POST['password']))
@@ -24,20 +25,27 @@ class LoginController extends AppController
             $_SESSION['message'] =  "<p class='error'>Incorrect email or password</p>";
             return FALSE;
         }
-        return $this->check_data();
+        return $this->check_datas();
     }
 
-    private function check_data()
+
+    //Vérifie si l'email existe déjà en bdd
+    private function check_datas()
     {
-        //Check if email set correspond to email bdd FOR LOGIN
         $email = $_POST['email'];
-        $sql = "SELECT email FROM users WHERE email='$email'";
+        $password = $_POST['password'];
+        $sql = "SELECT email, password, id, ban FROM users WHERE email='$email'";
         $this->_connect->setQuery($sql);
         $res = $this->_connect->SQLquery();
 
         if ($email == $res['email']) 
         {
-            return $this->pwd_checked();
+            if ($this->user_ban($res['ban']))
+            {
+                return $this->match_pwd($password, $id);
+            }
+
+            return $this->redirect();
         }
         else
         {
@@ -46,8 +54,26 @@ class LoginController extends AppController
         }
     }
 
-    private function check_pwd()
+    //Verifie le password match
+    private function match_pwd($password, $id)
     {
-        
+        $password_field = $_POST['password'];
+        $verif_pwd = password_verify($password_field, $password);
+
+        if ($verif_pwd)
+        {
+            $_SESSION['log'] = $id;
+            //if (!empty($_POST['remember_me']))
+            if ($_POST['remember_me'] == 'on')
+            {
+                create_cookie('log', $id);
+            }
+            return true;
+        }else
+        {
+            $_SESSION['message'] = "<p class='error'>Incorrect email/password</p>";  
+            return FALSE;
+        }
     }
+
 }
