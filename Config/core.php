@@ -9,10 +9,10 @@
 
      private static function init()
      {
-       global $basePath;
+         global $basePath;
 
-       // Load configuration file
-       include $basePath."/Config/config.php";
+         // Load configuration file
+         include $basePath."/Config/config.php";
 
 
          // Load core classes
@@ -21,6 +21,8 @@
          require $basePath."/Src/Router.php";
          require $basePath."/Src/session.php";
          require $basePath."/Src/log.php";
+         require $basePath."/Controllers/AppController.php";
+         require $basePath."/Models/AModel.php";
          require $basePath."/Dispatcher.php";
 
          // Start session
