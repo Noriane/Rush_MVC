@@ -20,7 +20,7 @@ class ArticleController extends AppController
 
         $this->_params['article']=[];
 
-        while ($data = $this->_params['data']->fetch()) {
+        while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
             array_push($this->_params['article'], $data);
             $this->_params['article']['nb_comment']= $this->_model->nb_comment($data['id']);
         }
@@ -32,7 +32,7 @@ class ArticleController extends AppController
 
             $this->_params['data'] = $this->_model->comments($id);
 
-            while ($data = $this->_params['data']->fetch()) {
+            while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                 array_push($this->_params['comments'], $data);
             }
         }
