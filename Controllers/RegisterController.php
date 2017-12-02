@@ -14,25 +14,32 @@ class RegisterController extends AppController
 
     protected function beforeRender()
     {
-        $this->_params['session'] = $_SESSION;
-        $this->checkDatas();
+        if (!empty($_POST))
+        {
+            $this->checkDatas();
+            $this->_params['session'] = $_SESSION;
+        }
+        else
+        {
+            $_SESSION['message'] = "";
+        }
     }
 
     //Fais toutes les vérif sur la présence et la validité des champs du formulaire
-    private function checkDatas()
+    protected function checkDatas()
     {
-        $username = $this->secure_input($_POST['username']);
-        $email = $this->secure_input($_POST['email']);
-        $password = $this->secure_input($_POST['password']);
-        $password_confirm = $this->secure_input($_POST['password_confirm']);
+        $name = $this->secure_input($_POST['add_user']['name']);
+        $email = $this->secure_input($_POST['add_user']['email']);
+        $password = $this->secure_input($_POST['add_user']['password']);
+        $password_confirm = $this->secure_input($_POST['add_user']['password_confirm']);
 
         $email_error = "Invalid email";
         $pwd_error = "Invalid password or password confirmation";
-        $username_error = "Username is required";
+        $name_error = "Username is required";
 
-        if (empty($username))
+        if (empty($name))
         {
-            $_SESSION['message'] = $username_error; 
+            $_SESSION['message'] = $name_error; 
             return false;
         }
         if (empty($email) || (!filter_var($email, FILTER_VALIDATE_EMAIL)))
@@ -40,12 +47,7 @@ class RegisterController extends AppController
             $_SESSION['message'] = $email_error;
             return false;
         }
-        if (empty($password))
-        {
-            $_SESSION['message'] = $pwd_error;
-            return false;
-        }
-        if (empty($password_confirm))
+        if (empty($password) || empty($password_confirm))
         {
             $_SESSION['message'] = $pwd_error;
             return false;
@@ -59,45 +61,45 @@ class RegisterController extends AppController
     }
 
     //Vérifie si l'email n'est pas déjà enregistré en bdd
-    private function uniqueEmail()
+    protected function uniqueEmail()
     {
-        $res = $this->_model->check_email($_POST['email']);
+        $email = $_POST['add_user']['email'];
+        $res = $this->_model->check_email($_POST['add_user']['email']);
+        //var_dump($res);
         if (!empty($res))
         {
-            if ($res['email'] == $email)
+            if ($res[0]['email'] == $email)
             {
-                $_SESSION['message'] = "This email is already taken.</p>";
+                $_SESSION['message'] = "This email is already taken";
                 return false;
             }
         }
         return $this->hashPassword();
     }
 
-    private function hashPassword()
+    protected function hashPassword()
     {
-        $password = $_POST['password'];
-        $pwd_hashed = password_hash($password, PASSWORD_DEFAULT);
+        $password = $this->secure_input($_POST['add_user']['password']);
+        $pwd_hashed = password_hash($password, \PASSWORD_DEFAULT);
         $verif_pwd = password_verify($password, $pwd_hashed);
         if ($verif_pwd)
         {
+            $_POST['add_user']['password'] = $pwd_hashed;
             return $this->add_user();
         }
         return false;
     }
 
-    private function add_user()
+    protected function add_user()
     {
         $input=[];
         foreach ($_POST['add_user'] as $key => $value) 
         {
             $input[$key] = $this->secure_input($value);
         }
-        if ($this->hashPassword())
-        {
-            $this->_model->add_user($input);
-            $this->redirect(); 
-            return true;
-        }
-        return false;
+        
+        $this->_model->add_user($input);
+        $this->redirect(); 
+        return true;    
     }
 }

@@ -2,7 +2,7 @@
 
 class RegisterModel extends AModel
 {
-    private function check_email($email)
+    public function check_email($email)
     {
     	$sql = "SELECT email FROM users WHERE email='$email'";
         $this->_connect->setQuery($sql);
@@ -16,7 +16,7 @@ class RegisterModel extends AModel
         $pass = $user['password'];
         $email = $user['email'];
         $group = "USER";
-        $sql = "INSERT INTO users VALUES (null,'$name','$pass','$email','$group','0',NOW(),NOW()";
+        $sql = "INSERT INTO users VALUES (null,'$name','$pass','$email','$group','0',NOW(),NOW())";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);

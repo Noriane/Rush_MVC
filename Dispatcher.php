@@ -8,17 +8,17 @@ if (!empty($_GET['url'])) {
 
 
 $router->get('/', function () {
-    require PATH."/Models/Accueil.php";
-    require PATH."/Controllers/AccueilController.php";
-    require PATH."/Views/View.php";
+    require_once PATH."/Models/Accueil.php";
+    require_once PATH."/Controllers/AccueilController.php";
+    require_once PATH."/Views/View.php";
 
     AccueilController::getInstance("AccueilModel", "index.twig")->run();
 });
 
 $router->get('/articles/:id', function ($id) {
-    require PATH."/Models/Article.php";
-    require PATH."/Controllers/ArticleController.php";
-    require PATH."/Views/View.php";
+    require_once PATH."/Models/Article.php";
+    require_once PATH."/Controllers/ArticleController.php";
+    require_once PATH."/Views/View.php";
 
     ArticleController::getInstance("ArticleModel", "article.twig")->run();
 });
@@ -32,17 +32,25 @@ $router->get('/writer', function () {
 });
 
 $router->get('/login', function () {
-    require PATH."/Models/Login.php";
-    require PATH."/Controllers/LoginController.php";
-    require PATH."/Views/View.php";
+    require_once PATH."/Models/Login.php";
+    require_once PATH."/Controllers/LoginController.php";
+    require_once PATH."/Views/View.php";
 
     LoginController::getInstance("LoginModel", "login.twig")->run();
 });
 
 $router->get('/register', function () {
-    require PATH."/Models/Register.php";
-    require PATH."/Controllers/registerController.php";
-    require PATH."/Views/View.php";
+    require_once PATH."/Models/Register.php";
+    require_once PATH."/Controllers/registerController.php";
+    require_once PATH."/Views/View.php";
+
+    RegisterController::getInstance("registerModel", "register.twig")->run();
+});
+
+$router->post('/register', function () {
+    require_once PATH."/Models/Register.php";
+    require_once PATH."/Controllers/registerController.php";
+    require_once PATH."/Views/View.php";
 
     RegisterController::getInstance("registerModel", "register.twig")->run();
 });

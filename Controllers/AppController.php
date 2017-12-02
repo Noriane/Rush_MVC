@@ -4,6 +4,7 @@ abstract class AppController
 {
     protected $_model;
     protected $_file;
+    protected $_view;
     protected $_params = [];
     protected $_log;
     protected static $_instance = null;
@@ -41,7 +42,7 @@ abstract class AppController
 
     protected function render()
     {
-        $this->_file = new View($this->_file, $this->_params);
+        $this->_view = new View($this->_file, $this->_params);
     }
 
     public function run()
@@ -49,18 +50,15 @@ abstract class AppController
         $this->beforeRender();
         $this->render();
     }
-
-    protected function redirect()
+    protected function redirect($method = "GET", $url = "/")
     {
-        $router = new Router();
-
-        $router->get('/', function () {
-            require PATH."/Models/Accueil.php";
-            require PATH."/Controllers/AccueilController.php";
-            require PATH."/Views/View.php";
-
-            AccueilController::getInstance("AccueilModel", "index.twig")->run();
-        });
+        $router = Router::getInstance();
+        //var_dump($router);
+        return $router->redirect($method, $url);
+    }
+    protected function redirectHome()
+    {
+        return $this->redirect("GET", "/");
     }
 
     public function secure_input($data)

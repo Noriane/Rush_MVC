@@ -19,11 +19,11 @@
 		<p>{{session['message']}}</p>
 
 		<section>
-			<form>
-				<input type="text" value="username" placeholder="username">
-				<input type="email" value="email" placeholder="Email">
-				<input type="password" value="password" placeholder="Create a new password">
-				<input type="password" value="password_confirm" placeholder="Confirm your password">
+			<form method="POST" action="">
+				<input type="text" name="add_user[name]" placeholder="name">
+				<input type="email" name="add_user[email]" placeholder="Email">
+				<input type="password" name="add_user[password]" placeholder="Create a new password">
+				<input type="password" name="add_user[password_confirm]" placeholder="Confirm your password">
 				<button class="ui button">Create new account</button>
 			</form>
 		</section>

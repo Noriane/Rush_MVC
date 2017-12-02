@@ -5,10 +5,17 @@ class Router
     private $_url;
     private $_routes = [];
     private $_namedRoutes = [];
+    private static $_instance;
 
     public function __construct($url)
     {
         $this->_url = $url;
+        static::$_instance = $this;
+    }
+
+    static public function getInstance()
+    {
+        return static::$_instance;
     }
 
     public function get($path, $callable, $name = null)
@@ -47,6 +54,19 @@ class Router
         echo "404 not found";
         header('HTTP/1.1 404 Not Found');
         //require_once($basePath.'/Controllers/404Controller.php');
+    }
+
+    public function redirect($method, $url)
+    {
+        if (empty($this->_routes[$method])) {
+            throw new Exception("REQUEST_METHOD does not exist", 1);
+        }
+        foreach ($this->_routes[$method] as $route) {
+            if ($route->match($url)) {
+                return $route->call();
+            }
+        }
+        throw new Exception("Route doesn't exit", 1);
     }
 
     public function url($name, $params = [])

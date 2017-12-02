@@ -13,16 +13,16 @@
          session_start();
 
          // Load configuration file
-         include PATH."/Config/config.php";
+         include_once PATH."/Config/config.php";
 
          // Load core classes
-         require PATH."/Config/Db.php";
-         require PATH."/Src/Route.php";
-         require PATH."/Src/Router.php";
-         require PATH."/Src/session.php";
-         require PATH."/Src/log.php";
-         require PATH."/Controllers/AppController.php";
-         require PATH."/Models/AModel.php";
-         require PATH."/Dispatcher.php";
+         require_once PATH."/Config/Db.php";
+         require_once PATH."/Src/Route.php";
+         require_once PATH."/Src/Router.php";
+         require_once PATH."/Src/session.php";
+         require_once PATH."/Src/log.php";
+         require_once PATH."/Controllers/AppController.php";
+         require_once PATH."/Models/AModel.php";
+         require_once PATH."/Dispatcher.php";
      }
  }
