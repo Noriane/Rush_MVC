@@ -27,7 +27,7 @@ class WriterMainController extends WriterMainController
             }
             array_shift($this->_params);
         } else {
-            $this->redirect();
+            //$this->redirect();
         }
     }
 

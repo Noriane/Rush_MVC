@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `group` varchar(6) DEFAULT NULL,
+  `groupe` varchar(6) DEFAULT NULL,
   `ban` tinyint(4) DEFAULT NULL,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_date` datetime NOT NULL,

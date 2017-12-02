@@ -26,34 +26,36 @@ $router->get('/articles/:id', function ($id) {
 
 $router->get('/admin', function () {
     require_once PATH."/Models/Admin.php";
+    require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Controllers/AdminController.php";
     require_once PATH."/Views/View.php";
 
-    ArticleController::getInstance("AdminModel", "admin.twig")->run();
+    AdminController::getInstance("AdminModel", "admin.twig")->run();
 });
 
 $router->post('/admin', function () {
     require_once PATH."/Models/Admin.php";
+    require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Controllers/AdminController.php";
     require_once PATH."/Views/View.php";
 
-    ArticleController::getInstance("AdminModel", "admin.twig")->run();
+    AdminController::getInstance("AdminModel", "admin.twig")->run();
 });
 
 $router->get('/writer', function () {
-  require_once PATH."/Models/Writer.php";
-  require_once PATH."/Controllers/WriterMainController.php";
-  require_once PATH."/Views/View.php";
+    require_once PATH."/Models/Writer.php";
+    require_once PATH."/Controllers/WriterMainController.php";
+    require_once PATH."/Views/View.php";
 
-  ArticleController::getInstance("WriterModel", "writer.twig")->run();
+    WriterMainController::getInstance("WriterModel", "writer.twig")->run();
 });
 
 $router->post('/writer', function () {
-  require_once PATH."/Models/Writer.php";
-  require_once PATH."/Controllers/WriterMainController.php";
-  require_once PATH."/Views/View.php";
+    require_once PATH."/Models/Writer.php";
+    require_once PATH."/Controllers/WriterMainController.php";
+    require_once PATH."/Views/View.php";
 
-  ArticleController::getInstance("WriterModel", "writerMain.twig")->run();
+    WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
 $router->get('/login', function () {
@@ -76,18 +78,18 @@ $router->post('/login', function () {
 
 $router->get('/register', function () {
     require_once PATH."/Models/Register.php";
-    require_once PATH."/Controllers/registerController.php";
+    require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Views/View.php";
 
-    RegisterController::getInstance("registerModel", "register.twig")->run();
+    RegisterController::getInstance("RegisterModel", "register.twig")->run();
 });
 
 $router->post('/register', function () {
     require_once PATH."/Models/Register.php";
-    require_once PATH."/Controllers/registerController.php";
+    require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Views/View.php";
 
-    RegisterController::getInstance("registerModel", "register.twig")->run();
+    RegisterController::getInstance("RegisterModel", "register.twig")->run();
 });
 
 

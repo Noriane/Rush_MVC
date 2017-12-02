@@ -60,7 +60,7 @@ class AdminController extends RegisterController
             }
             $test_group = ['ADMIN','WRITER','USER'];
 
-            if (in_array($_POST['modif_user']['group'], $test_group)) {
+            if (in_array($_POST['modif_user']['groupe'], $test_group)) {
                 foreach ($_POST['modif_user'] as $key => $value) {
                     $this->_datasUser[$key] = $this->secure_input($value);
                 }

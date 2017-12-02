@@ -15,7 +15,7 @@ class AdminModel extends AModel
         $name = $user['name'];
         $pass = $user['password'];
         $email = $user['email'];
-        $group = $user['group'];
+        $group = $user['groupe'];
         $sql = "INSERT INTO users VALUES (null,'$name','$pass','$email','$group','0',NOW(),NOW()";
 
         $this->_connect->setQuery($sql);
@@ -27,8 +27,8 @@ class AdminModel extends AModel
         $name = $user['name'];
         $ban = $user['ban'];
         $email = $user['email'];
-        $group = $user['group'];
-        $sql = "UPDATE users username = '$name',email = '$email', group = '$group',ban = $ban, edit_date = NOW()";
+        $group = $user['groupe'];
+        $sql = "UPDATE users username = '$name',email = '$email', groupe = '$group',ban = $ban, edit_date = NOW()";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);

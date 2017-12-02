@@ -18,10 +18,10 @@ class Log
 
     public function is_group()
     {
-        $req = "SELECT `group` from users WHERE id = '$this->_id'";
+        $req = "SELECT groupe from users WHERE id = '$this->_id'";
         $this->_bdd->setQuery($req);
         $donne = $this->_bdd->SQLquery();
-        if ($donne[0]["group"] == "ADMIN") {
+        if ($donne[0]["groupe"] == "ADMIN") {
             return "ADMIN";
         } elseif ($donne[0]["group"] == "WRITER") {
             return "WRITER";
