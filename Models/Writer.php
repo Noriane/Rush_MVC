@@ -51,4 +51,5 @@ class WriterModel extends AModel
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
     }
+
 }

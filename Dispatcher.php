@@ -8,7 +8,7 @@ if (!empty($_GET['url'])) {
 
 
 $router->get('/', function () {
-	echo "Route / ";
+    echo "Route / ";
     require_once PATH."/Models/Accueil.php";
     require_once PATH."/Controllers/AccueilController.php";
     require_once PATH."/Views/View.php";
@@ -25,15 +25,39 @@ $router->get('/articles/:id', function ($id) {
 });
 
 $router->get('/admin', function () {
-    echo "Page admin";
+    require_once PATH."/Models/Admin.php";
+    require_once PATH."/Controllers/AdminController.php";
+    require_once PATH."/Views/View.php";
+
+    ArticleController::getInstance("AdminModel", "admin.twig")->run();
+});
+
+$router->post('/admin', function () {
+    require_once PATH."/Models/Admin.php";
+    require_once PATH."/Controllers/AdminController.php";
+    require_once PATH."/Views/View.php";
+
+    ArticleController::getInstance("AdminModel", "admin.twig")->run();
 });
 
 $router->get('/writer', function () {
-    echo "Page writer";
+  require_once PATH."/Models/Writer.php";
+  require_once PATH."/Controllers/WriterMainController.php";
+  require_once PATH."/Views/View.php";
+
+  ArticleController::getInstance("WriterModel", "writer.twig")->run();
+});
+
+$router->post('/writer', function () {
+  require_once PATH."/Models/Writer.php";
+  require_once PATH."/Controllers/WriterMainController.php";
+  require_once PATH."/Views/View.php";
+
+  ArticleController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
 $router->get('/login', function () {
-	echo "Route /login ";
+    echo "Route /login ";
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
     require_once PATH."/Views/View.php";
@@ -42,7 +66,7 @@ $router->get('/login', function () {
 });
 
 $router->post('/login', function () {
-	echo "Route /login post ";
+    echo "Route /login post ";
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
     require_once PATH."/Views/View.php";

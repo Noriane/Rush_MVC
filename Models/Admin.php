@@ -41,4 +41,12 @@ class AdminModel extends AModel
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
     }
+
+    public function check_email($email)
+    {
+        $sql = "SELECT email FROM users WHERE email='$email'";
+        $this->_connect->setQuery($sql);
+        $res = $this->_connect->SQLquery();
+        return $res;
+    }
 }

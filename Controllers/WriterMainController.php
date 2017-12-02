@@ -7,14 +7,30 @@ class WriterMainController extends AppController
         //verif si c'est un admin
         if ((($this->_params['user']['group'] == "ADMIN") || ($this->_params['user']['group'] == "WRITER")) && ($this->_params['user']['ban'] == false)) {
 
-              //si reçois add_users avec toutes les données nécessaires
+              //si reçois add_article avec toutes les données nécessaires
             if (!empty($_POST['add_article'])) {
-                $this->add_article();
+                $router = new Router("");
+
+                $router->post('/', function () {
+                    require_once PATH."/Models/Writer.php";
+                    require_once PATH."/Controllers/WriterArticleController.php";
+                    require_once PATH."/Views/View.php";
+
+                    ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
+                });
             }
 
-            //si reçois modif_users avec tous les champs user sauf password
+            //si reçois modif_article avec tous les champs user sauf password
             if (!empty($_POST['modif_article'])) {
-                $this->modif_article();
+                $router = new Router("");
+
+                $router->post('/', function () {
+                    require_once PATH."/Models/Writer.php";
+                    require_once PATH."/Controllers/WriterArticleController.php";
+                    require_once PATH."/Views/View.php";
+
+                    ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
+                });
             }
 
             //si reçois delete_users avec un id
@@ -34,25 +50,6 @@ class WriterMainController extends AppController
         } else {
             $this->redirect();
         }
-    }
-
-    private function add_article()
-    {
-        $input=[];
-        foreach ($_POST['add_article'] as $key => $value) {
-            $input[$key] = $this->secure_input($value);
-        }
-        $input['author_id']= $_SESSION["log"];
-        $this->_model->add_article($input);
-    }
-
-    private function modif_article()
-    {
-        $input=[];
-        foreach ($_POST['add_article'] as $key => $value) {
-            $input[$key] = $this->secure_input($value);
-        }
-        $this->_model->modif_article($input);
     }
 
     private function delete_article()

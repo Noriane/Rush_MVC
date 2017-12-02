@@ -2,7 +2,7 @@
 
 class RegisterController extends AppController
 {
-    private $_datasUser = [];
+    protected $_datasUser = [];
 
     protected function beforeRender()
     {
@@ -31,7 +31,7 @@ class RegisterController extends AppController
 
         if (empty($name))
         {
-            $_SESSION['message'] = $name_error; 
+            $_SESSION['message'] = $name_error;
             return false;
         }
         if (empty($email) || (!filter_var($email, FILTER_VALIDATE_EMAIL)))
@@ -85,13 +85,13 @@ class RegisterController extends AppController
     protected function add_user()
     {
         $input=[];
-        foreach ($_POST['add_user'] as $key => $value) 
+        foreach ($_POST['add_user'] as $key => $value)
         {
             $input[$key] = $this->secure_input($value);
         }
-        
+
         $this->_model->add_user($input);
-        $this->fullredirect("/login"); 
-        return true;    
+        $this->fullredirect("/login");
+        return true;
     }
 }
