@@ -47,7 +47,7 @@ $router->get('/writer', function () {
     require_once PATH."/Controllers/WriterMainController.php";
     require_once PATH."/Views/View.php";
 
-    WriterMainController::getInstance("WriterModel", "writer.twig")->run();
+    WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
 $router->post('/writer', function () {

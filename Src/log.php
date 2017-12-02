@@ -44,10 +44,10 @@ class Log
         $req= "SELECT ban FROM users WHERE id = '$this->_id'";
         $this->_bdd->setQuery($req);
         $donne = $this->_bdd->SQLquery();
-        if ($donne == 0) {
-            return "false";
+        if (empty($donne["ban"])) {
+            return false;
         } else {
-            return "true";
+            return true;
         }
     }
 
