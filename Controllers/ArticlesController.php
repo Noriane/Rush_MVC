@@ -61,10 +61,4 @@
 			return $data;
 		}
 	}
-
-
-	// $article = new articleController($path, $_GET, $_POST);
-	//
-	// $articles = $article->get_articles();
-
-	//include_once($basePath.'Views/Articles/action.html');
+}

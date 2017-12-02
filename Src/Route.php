@@ -9,13 +9,16 @@
 
         public function __construct($path, $callable)
         {
+
             $this->_path = trim($path, '/');
             $this->_callable = $callable;
         }
 
         public function match($url)
         {
+            
             $url = trim($url, '/');
+            
             $path = preg_replace_callback('#:([\w]+)#', [$this, 'paramMatch'], $this->_path);
             $regex = "#^$path$#i";
             if (!preg_match($regex, $url, $matches)) {
@@ -42,6 +45,7 @@
 
         public function call()
         {
+            echo "call:".$this->_path.":<br/>";
             return call_user_func_array($this->_callable, $this->_matches);
         }
     }

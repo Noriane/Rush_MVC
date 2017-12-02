@@ -7,17 +7,17 @@ abstract class AppController
     protected $_view;
     protected $_params = [];
     protected $_log;
-    protected static $_instance = null;
+    protected $redirected = False;
+    protected static $_instance = [];
 
     protected function __construct($model, $file)
     {
-
         $this->loadModel($model);
         $this->user_id();
         $this->_file = $file;
         
-        if ($this->_log >= 0) {
-            $login = new log($this->_log);
+        if (!is_integer($this->_log)) {
+            $login = $this->_log;
             $this->_params['user']['group'] = $login->is_group();
             $this->_params['user']['name'] = $login->this_name();
             $this->_params['user']['ban'] = $login->is_ban();
@@ -25,14 +25,14 @@ abstract class AppController
     }
 
     //retourn l'instance en cours ou en crée une
-    abstract public static function getInstance($model, $file = null);
-    // {
-    // 		if (is_null(self::$_instance)) {
-    // 				self::$_instance = new AppController();
-    // 		}
-    // 		return self::$_instance;
-    // }
-
+    public static function getInstance($model, $file = null)
+    {
+        $cls = get_called_class(); // renvoi le nom de la vraie classe (pas AppController)
+        if (!isset(self::$_instance[$cls])) {
+            self::$_instance[$cls] = new $cls($model, $file);
+        }
+        return self::$_instance[$cls];
+    }
     protected function loadModel($model)
     {
         $this->_model = new $model();
@@ -41,24 +41,30 @@ abstract class AppController
     abstract protected function beforeRender();
 
     protected function render()
-    {
+    {   
         $this->_view = new View($this->_file, $this->_params);
     }
 
     public function run()
     {
         $this->beforeRender();
-        $this->render();
+        if(!$this->redirected)
+        {
+            $this->render();            
+        }
+
+    }
+    protected function fullredirect($url = "/")
+    {
+        Header("Location: ".BASE_URL.$url);
+        exit();
     }
     protected function redirect($method = "GET", $url = "/")
     {
         $router = Router::getInstance();
+        $this->redirected = True;
         //var_dump($router);
         return $router->redirect($method, $url);
-    }
-    protected function redirectHome()
-    {
-        return $this->redirect("GET", "/");
     }
 
     public function secure_input($data)

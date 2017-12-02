@@ -8,6 +8,7 @@ if (!empty($_GET['url'])) {
 
 
 $router->get('/', function () {
+	echo "Route / ";
     require_once PATH."/Models/Accueil.php";
     require_once PATH."/Controllers/AccueilController.php";
     require_once PATH."/Views/View.php";
@@ -32,6 +33,16 @@ $router->get('/writer', function () {
 });
 
 $router->get('/login', function () {
+	echo "Route /login ";
+    require_once PATH."/Models/Login.php";
+    require_once PATH."/Controllers/LoginController.php";
+    require_once PATH."/Views/View.php";
+
+    LoginController::getInstance("LoginModel", "login.twig")->run();
+});
+
+$router->post('/login', function () {
+	echo "Route /login post ";
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
     require_once PATH."/Views/View.php";

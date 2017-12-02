@@ -37,6 +37,7 @@
         public function SQLquery($fetch = true)
         {
             $res = $this->_pdo->prepare($this->_query);
+
             $check = $res->execute($this->_variable);
             if (!$check) {//La requete n'est pas passée
                 return (-1);

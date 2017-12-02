@@ -19,9 +19,14 @@
 		<p>{{session['message']}}</p>
 
 		<section>
-			<form>
-				<input type="text" value="email" placeholder="Email">
-				<input type="text" value="password" placeholder="Password">
+			<form method="POST" action="">
+				<input type="text" name="email" placeholder="Email">
+				<input type="password" name="password" placeholder="Password">
+				
+				<div class="checkbox">
+					<input type="checkbox" name="remember_me" id="remember">
+					<label for="remember">Remember me</label><br>
+				</div>
 				<button class="ui button">Log in</button>
 			</form>
 		</section>

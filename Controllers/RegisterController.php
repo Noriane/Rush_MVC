@@ -3,14 +3,6 @@
 class RegisterController extends AppController
 {
     private $_datasUser = [];
-    //retourn l'instance en cours ou en crée une
-    public static function getInstance($model, $file = null)
-    {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new RegisterController($model, $file);
-        }
-        return self::$_instance;
-    }
 
     protected function beforeRender()
     {
@@ -99,7 +91,7 @@ class RegisterController extends AppController
         }
         
         $this->_model->add_user($input);
-        $this->redirect(); 
+        $this->fullredirect("/login"); 
         return true;    
     }
 }

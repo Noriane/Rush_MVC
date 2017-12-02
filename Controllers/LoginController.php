@@ -5,18 +5,20 @@ class LoginController extends AppController
     private $_datasUser = [];
 
     //retourn l'instance en cours ou en crée une
-    public static function getInstance($model, $file = null)
-    {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new LoginController($model, $file);
-        }
-        return self::$_instance;
-    }
+
 
     protected function beforeRender()
     {
+        if (!empty($_POST))
+        {
+            $this->fieldForm();
+            $this->_params['session'] = $_SESSION;
+        }
+        else
+        {
+            $_SESSION['message'] = "";
+        }
         $this->_params['session'] = $_SESSION;
-        $this->fieldForm();
     }
 
     //Vérifie si les 2 champs sont remplis
@@ -33,17 +35,19 @@ class LoginController extends AppController
     //Vérifie si l'email existe déjà en bdd
     private function checkDatas()
     {
-        $email = secure_input($_POST['email']);
-        $password = secure_input($_POST['password']);
+        $email = $this->secure_input($_POST['email']);
+        $password = $this->secure_input($_POST['password']);
         
-        $this->_datasUser = $this->_model->get_datas_user();
+        $this->_datasUser = $this->_model->get_datas_user($email);
+        $id = $this->_datasUser[0]['id'];
 
-        if ($email == $this->_datasUser['email']) 
+        if ($email == $this->_datasUser[0]['email']) 
         {
-            if ($this->_params['user']['ban'] == false)
-            {
+            if ($this->_datasUser[0]['ban'] == false)
+            {   
                 return $this->match_pwd($password, $id);
             }
+            $_SESSION['message'] = "User is ban";
         }
         else
         {
@@ -55,20 +59,19 @@ class LoginController extends AppController
     //Verifie si le password match
     private function match_pwd($password, $id)
     {
-        $password_field = $_POST['password'];
-        $verif_pwd = password_verify($password_field, $password);
-
+        $password_field = $this->secure_input($_POST['password']);
+        $verif_pwd = password_verify($password_field, $this->_datasUser[0]['password']);
         if ($verif_pwd)
         {
             $_SESSION['log'] = $id;
-            if ($_POST['remember_me'] == 'on')
+            if (!empty($_POST['remember_me']) && $_POST['remember_me'] == 'on')
             {
-                create_cookie('log', $id);
+                setcookie('log', $id, time()+3600);
             }
-            return $this->redirect();
+            return $this->fullredirect();
         }else
         {
-            $_SESSION['message'] = "Passwords don't match";  
+            $_SESSION['message'] = "Invalid Password";  
             return FALSE;
         }
     }
