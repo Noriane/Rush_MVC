@@ -33,7 +33,7 @@ class WriterMainController extends AppController
                 });
             }
 
-            //si reçois delete_users avec un id
+            //si reçois delete_article avec un id
             if (!empty($_POST['delete_article'])) {
                 $this->delete_article();
             }

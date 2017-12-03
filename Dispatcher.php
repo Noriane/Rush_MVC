@@ -112,7 +112,10 @@ $router->post('/register', function () {
 
 
 $router->get('/logout', function () {
-    echo "Page logout";
+    require_once PATH."/Controllers/LogoutController.php";
+    require_once PATH."/Views/View.php";
+
+    LogoutController::getInstance("", "register.twig")->run();
 });
 
 $router->run();

@@ -33,6 +33,7 @@ abstract class AppController
         }
         return self::$_instance[$cls];
     }
+    
     protected function loadModel($model)
     {
         $this->_model = new $model();
