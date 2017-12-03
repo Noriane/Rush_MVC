@@ -38,7 +38,7 @@ class CommentModel extends AModel
     //supprime le comment
     public function delete_comment($id)
     {
-        $sql = " DELETE comments WHERE id = '$id'";
+        $sql = " DELETE FROM comments WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);

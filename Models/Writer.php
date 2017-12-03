@@ -14,12 +14,12 @@ class WriterModel extends AModel
     //supprime les comments lié aux articles puis l'article
     public function delete_article($id)
     {
-        $sql = " DELETE comments WHERE articles_id = '$id'";
+        $sql = " DELETE FROM comments WHERE articles_id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
 
-        $sql = " DELETE articles WHERE id = '$id'";
+        $sql = " DELETE FROM articles WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
