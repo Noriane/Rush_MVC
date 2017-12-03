@@ -42,6 +42,24 @@ $router->post('/admin', function () {
     AdminController::getInstance("AdminModel", "admin.twig")->run();
 });
 
+$router->get('/setting', function () {
+    require_once PATH."/Models/Setting.php";
+    require_once PATH."/Controllers/RegisterController.php";
+    require_once PATH."/Controllers/SettingController.php";
+    require_once PATH."/Views/View.php";
+
+    SettingController::getInstance("SettingModel", "setting.twig")->run();
+});
+
+$router->post('/settig', function () {
+    require_once PATH."/Models/Setting.php";
+    require_once PATH."/Controllers/RegisterController.php";
+    require_once PATH."/Controllers/SettingController.php";
+    require_once PATH."/Views/View.php";
+
+    SettingController::getInstance("SettingModel", "setting.twig")->run();
+});
+
 $router->get('/writer', function () {
     require_once PATH."/Models/Writer.php";
     require_once PATH."/Controllers/WriterMainController.php";
