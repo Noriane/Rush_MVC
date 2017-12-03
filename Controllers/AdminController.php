@@ -30,7 +30,8 @@ class AdminController extends RegisterController
             while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                 array_push($this->_params['users'], $data);
             }
-            array_shift($this->_params);
+            unset($this->_params['users']['password']);
+            unset($this->_params['data']);
         } else {
             $this->redirect();
         }

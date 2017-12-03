@@ -28,7 +28,7 @@ class AdminModel extends AModel
         $ban = $user['ban'];
         $email = $user['email'];
         $group = $user['groupe'];
-        $sql = "UPDATE users username = '$name',email = '$email', groupe = '$group',ban = $ban, edit_date = NOW()";
+        $sql = "UPDATE users username = '$name',email = '$email', groupe = '$group',ban = $ban, edit_date = NOW() WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);

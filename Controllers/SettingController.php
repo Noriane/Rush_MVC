@@ -1,9 +1,60 @@
 <?php
-require_once('./AppController.php');
 
-class SettingController extends AppController
+class SettingController extends RegisterController
 {
-    protected function beforeRender(){
+    protected function beforeRender()
+    {
+        if (!empty($this->_params['user'])) {
+            if (!empty($_POST['modif_user'])) {
+                $this->modif_user();
+            }
 
+            $this->_params['data'] = $this->_model->user();
+
+            $this->_params['all_data_user']=[];
+
+            while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
+                array_push($this->_params['all_data_user'], $data);
+            }
+            unset($this->_params['all_data_user']['password']);
+            unset($this->_params['all_data_user']['ban']);
+            unset($this->_params['data']);
+        } else {
+          $this->redirect();
+        }
+    }
+
+    private function modif_user()
+    {
+        $email = $_POST['modif_user']['email'];
+        $res = $this->_model->check_email($_POST['modif_user']['email']);
+
+        if (!empty($res)) {
+            if ($res[0]['email'] == $email) {
+                $_SESSION['message'] = "This email is already taken";
+                return false;
+            }
+
+            foreach ($_POST['modif_user'] as $key => $value) {
+                $this->_datasUser[$key] = $this->secure_input($value);
+            }
+
+            if (empty($_POST['modif_user']['password'])) {
+                $this->_model->modif_user_sp($this->_datasUser);
+            } else {
+                $this->hashPassword();
+            }
+        }
+    }
+
+    protected function hashPassword()
+    {
+        $password = $this->_datasUser['password'];
+        $pwd_hashed = password_hash($password, \PASSWORD_DEFAULT);
+        $verif_pwd = password_verify($password, $pwd_hashed);
+        if ($verif_pwd) {
+            $this->_model->modif_user($this->_datasUser, $pwd_hashed);
+        }
+        return false;
     }
 }

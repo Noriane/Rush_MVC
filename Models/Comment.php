@@ -16,7 +16,7 @@ class CommentModel extends AModel
         $author = $comment['author_id'];
         $art = $comment['articles_id'];
 
-        $sql = "INSERT INTO comments VALUES (null,'$title','$content','$author','$cat',null,'$url',NOW(),NOW()";
+        $sql = "INSERT INTO comments VALUES (null, '$content','$author','$art',NOW(),NOW()";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
@@ -26,17 +26,16 @@ class CommentModel extends AModel
     public function modif_comment($comment)
     {
         $content = $comment['content'];
-        $author = $comment['author_id'];
         $art = $comment['articles_id'];
 
-        $sql = "UPDATE comments title = '$title',content = '$content', categories_id = '$cat',url_img = $url, edit_date = NOW()";
+        $sql = "UPDATE comments VALUES content = '$content', edit_date = NOW()";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
     }
 
 
-    //supprime les comments lié aux comments puis l'comment
+    //supprime le comment
     public function delete_comment($id)
     {
         $sql = " DELETE comments WHERE id = '$id'";
