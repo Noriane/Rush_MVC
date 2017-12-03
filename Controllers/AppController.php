@@ -7,7 +7,7 @@ abstract class AppController
     protected $_view;
     protected $_params = [];
     protected $_log;
-    protected $redirected = False;
+    protected $redirected = false;
     protected static $_instance = [];
 
     protected function __construct($model, $file)
@@ -15,7 +15,7 @@ abstract class AppController
         $this->loadModel($model);
         $this->user_id();
         $this->_file = $file;
-        
+
         if (!is_integer($this->_log)) {
             $login = $this->_log;
             $this->_params['user']['group'] = $login->is_group();
@@ -41,18 +41,16 @@ abstract class AppController
     abstract protected function beforeRender();
 
     protected function render()
-    {   
+    {
         $this->_view = new View($this->_file, $this->_params);
     }
 
     public function run()
     {
         $this->beforeRender();
-        if(!$this->redirected)
-        {
-            $this->render();            
+        if (!$this->redirected) {
+            $this->render();
         }
-
     }
     protected function fullredirect($url = "/")
     {
@@ -62,7 +60,7 @@ abstract class AppController
     protected function redirect($method = "GET", $url = "/")
     {
         $router = Router::getInstance();
-        $this->redirected = True;
+        $this->redirected = true;
         //var_dump($router);
         return $router->redirect($method, $url);
     }
@@ -78,14 +76,14 @@ abstract class AppController
     //return id ou -1
     public function user_id()
     {
-        if (isset($_COOKIE["log"])) {
+        if (!empty($_COOKIE["log"])) {
             $_SESSION["log"] = $_COOKIE["log"];
             $this->_log= new Log($_SESSION["log"]);
         }
 
-        if (!empty($_SESSION) && (!isset($this->_log)) && isset($_SESSION['log'])) {
+        if (!empty($_SESSION["log"]) && empty($this->_log)) {
             $this->_log= new Log($_SESSION["log"]);
-        } else {
+        } elseif (empty($_SESSION["log"]) && empty($this->_log) && empty($_COOKIE["log"])) {
             $this->_log = -1;
         }
     }

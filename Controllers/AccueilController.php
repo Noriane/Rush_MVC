@@ -14,6 +14,6 @@ class AccueilController extends AppController
             $this->_params['articles'][$i]['nb_comment']= $this->_model->nb_comment($data['id']);
             $i++;
         }
-        array_shift($this->_params);
+      $this->_params['data'] = null;
     }
 }
