@@ -36,7 +36,7 @@ class AdminModel extends AModel
 
     public function delete_user($id)
     {
-        $sql = " DELETE users WHERE id = '$id'";
+        $sql = " DELETE FROM users WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
