@@ -1,36 +1,45 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Login</title>
+{% include 'Includes/head.twig' %}
 
-		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+<section class="login form">
+	<div class="ui middle aligned center aligned grid">
+	  <div class="column">
+	    <h1 class="ui teal image header">
+	        Nice to see you again !
+	    </h1>
+	    <h2>Please log in to your account</h2>
 
-		<script
-		  src="https://code.jquery.com/jquery-3.1.1.min.js"
-		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-		  crossorigin="anonymous"></script>
-		<script src="semantic/dist/semantic.min.js"></script>
-		<style type="text/css">
-			 
-  		</style>
-	</head>
-
-	<body>
-		<p>{{session['message']}}</p>
-
-		<section>
-			<form method="POST" action="">
-				<input type="text" name="email" placeholder="Email">
-				<input type="password" name="password" placeholder="Password">
-				
+		<form class="ui large form" method="POST" action="">
+			<div class="ui stacked segment">
+				<p class="error">{{session['message']}}</p>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="user icon"></i>
+				    <input type="text" name="email" placeholder="Email address">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="lock icon"></i>
+				    <input type="password" name="password" placeholder="Password">
+				  </div>
+				</div>
 				<div class="checkbox">
 					<input type="checkbox" name="remember_me" id="remember">
 					<label for="remember">Remember me</label><br>
 				</div>
-				<button class="ui button">Log in</button>
-			</form>
-		</section>
+				<button class="ui fluid large teal submit button primary">Login</button>
+			</div>
 
-	</body>
+	     
 
-</html>
+	    </form>
+
+	    <div class="ui message">
+	      New to us?&nbsp;<a href="register">Register now</a>
+	    </div>
+	  </div>
+	</div>
+</section>
+
+
+{% include 'Includes/footer.twig' %}

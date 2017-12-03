@@ -1,13 +1,16 @@
 body
 {
 	background-color:#f7f7f7;
-    .topContent
+    .topContent.admin
     {
     	padding-top:2em;
     	display:flex;
     	padding-top: 55px;
 	    padding-bottom: 26px;
-	    background-color: white;
+	    background-image: url(../../Webroot/Img/mononoke.jpg);
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    background-position: center bottom;
     	.ui.search
     	{
     		display:flex;

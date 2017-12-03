@@ -1,15 +1,18 @@
 body {
   background-color: #f7f7f7; }
-  body .topContent {
+  body .topContent.admin {
     padding-top: 2em;
     display: flex;
     padding-top: 55px;
     padding-bottom: 26px;
-    background-color: white; }
-    body .topContent .ui.search {
+    background-image: url(../../Webroot/Img/mononoke.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom; }
+    body .topContent.admin .ui.search {
       display: flex;
       flex: 1; }
-      body .topContent .ui.search .ui.input {
+      body .topContent.admin .ui.search .ui.input {
         margin: 0 auto;
         width: 40%; }
   body main {
@@ -32,9 +35,37 @@ body {
           body main.admin .userList .ui.card .content:first-child:after {
             display: none; }
 
+section.login.form, section.register.form {
+  background-image: url(../../Webroot/img/mononoke_by_etoli.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; }
+  section.login.form > div:first-child, section.register.form > div:first-child {
+    height: 100vh;
+    margin-top: 0; }
+    section.login.form > div:first-child .column, section.register.form > div:first-child .column {
+      width: 500px; }
+      section.login.form > div:first-child .column h1, section.login.form > div:first-child .column h2, section.register.form > div:first-child .column h1, section.register.form > div:first-child .column h2 {
+        color: white !important; }
+      section.login.form > div:first-child .column h1, section.register.form > div:first-child .column h1 {
+        font-size: 3em;
+        text-shadow: 1px 2px 14px rgba(0, 0, 0, 0.44); }
+      section.login.form > div:first-child .column h2, section.register.form > div:first-child .column h2 {
+        margin: 10px 0 30px;
+        font-weight: normal; }
+      section.login.form > div:first-child .column div.checkbox, section.register.form > div:first-child .column div.checkbox {
+        display: flex;
+        align-items: center;
+        margin: 15px 0; }
+        section.login.form > div:first-child .column div.checkbox > input, section.register.form > div:first-child .column div.checkbox > input {
+          display: inline-block;
+          margin-right: 5px; }
+
 .ui.modal .ui.form .fields {
   padding: 2em; }
   .ui.modal .ui.form .fields .field {
     width: 33%; }
+
+.error {
+  color: tomato; }
 
 /*# sourceMappingURL=index.css.map */

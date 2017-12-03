@@ -57,7 +57,6 @@ class RegisterController extends AppController
     {
         $email = $_POST['add_user']['email'];
         $res = $this->_model->check_email($_POST['add_user']['email']);
-        //var_dump($res);
         if (!empty($res))
         {
             if ($res[0]['email'] == $email)

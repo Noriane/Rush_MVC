@@ -45,7 +45,6 @@
 
         public function call()
         {
-            echo "call:".$this->_path.":<br/>";
             return call_user_func_array($this->_callable, $this->_matches);
         }
     }

@@ -4,6 +4,7 @@
 
 var
   gulp         = require('gulp'),
+  gulpd         = require('gulp-debug'),
 
   // node dependencies
   console      = require('better-console'),
@@ -66,11 +67,13 @@ module.exports = function(callback) {
     return;
   }
 
+console.log(source.definitions + '/**/' + globs.components + '.less');
   // unified css stream
   stream = gulp.src(source.definitions + '/**/' + globs.components + '.less')
     .pipe(plumber(settings.plumber.less))
     .pipe(less(settings.less))
     .pipe(autoprefixer(settings.prefix))
+    .pipe(gulpd())
     .pipe(replace(comments.variables.in, comments.variables.out))
     .pipe(replace(comments.license.in, comments.license.out))
     .pipe(replace(comments.large.in, comments.large.out))
@@ -89,6 +92,7 @@ module.exports = function(callback) {
     .pipe(replace(assets.source, assets.uncompressed))
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(output.uncompressed))
+    .pipe(gulpd())
     .pipe(print(log.created))
     .on('end', function() {
       runSequence('package uncompressed css', maybeCallback);

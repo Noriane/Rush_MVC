@@ -58,7 +58,6 @@ class Router
 
     public function redirect($method, $url)
     {
-        echo "*".$url."*";
         if (empty($this->_routes[$method])) {
             throw new Exception("REQUEST_METHOD does not exist", 1);
         }

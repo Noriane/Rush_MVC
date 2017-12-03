@@ -1,0 +1,43 @@
+section.login, section.register
+{
+	&.form
+	{
+		background-image: url(../../Webroot/img/mononoke_by_etoli.jpg);
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		>div:first-child
+		{
+			height:100vh;
+			margin-top:0;
+			.column
+			{
+				width:500px;
+				h1, h2
+				{
+					color:white !important;
+				}
+				h1
+				{
+					font-size:3em;
+					text-shadow:1px 2px 14px rgba(0, 0, 0, 0.44);
+				}
+				h2
+				{
+				    margin: 10px 0 30px;
+				    font-weight:normal;
+				}
+				div.checkbox
+				{
+					display: flex;
+				    align-items: center;
+				    margin: 15px 0;
+				    >input
+				    {
+				    	display:inline-block;
+				    	margin-right:5px;
+				    }
+				}
+			}
+		}
+	}
+}

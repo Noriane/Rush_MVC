@@ -77,7 +77,6 @@ $router->post('/writer', function () {
 });
 
 $router->get('/login', function () {
-    echo "Route /login ";
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
     require_once PATH."/Views/View.php";
@@ -86,7 +85,6 @@ $router->get('/login', function () {
 });
 
 $router->post('/login', function () {
-    echo "Route /login post ";
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
     require_once PATH."/Views/View.php";

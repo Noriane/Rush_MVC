@@ -1,33 +1,54 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Register</title>
 
-		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+{% include 'Includes/head.twig' %}
 
-		<script
-		  src="https://code.jquery.com/jquery-3.1.1.min.js"
-		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-		  crossorigin="anonymous"></script>
-		<script src="semantic/dist/semantic.min.js"></script>
-		<style type="text/css">
-			 
-  		</style>
-	</head>
+<section class="login form">
+	<div class="ui middle aligned center aligned grid">
+	  <div class="column">
+	    <h1 class="ui teal image header">
+	        Welcome in a new world
+	    </h1>
+	    <h2>Please create your account</h2>
 
-	<body>
-		<p>{{session['message']}}</p>
+		<form class="ui large form" method="POST" action="">
+			<div class="ui stacked segment">
+				<p class="error">{{session['message']}}</p>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="user icon"></i>
+				    <input type="text" name="add_user[name]" placeholder="name">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="mail icon"></i>
+				    <input type="email" name="add_user[email]" placeholder="Email">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="lock icon"></i>
+				    <input type="password" name="add_user[password]" placeholder="Create a new password">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="lock icon"></i>
+				    <input type="password" name="add_user[password_confirm]" placeholder="Confirm your password">
+				  </div>
+				</div>
+				<button class="ui fluid large teal submit button primary">Create new account</button>
+			</div>
 
-		<section>
-			<form method="POST" action="">
-				<input type="text" name="add_user[name]" placeholder="name">
-				<input type="email" name="add_user[email]" placeholder="Email">
-				<input type="password" name="add_user[password]" placeholder="Create a new password">
-				<input type="password" name="add_user[password_confirm]" placeholder="Confirm your password">
-				<button class="ui button">Create new account</button>
-			</form>
-		</section>
+	     
 
-	</body>
+	    </form>
 
-</html>
+	    <div class="ui message">
+	      Already an account ?&nbsp;<a href="login">Log in now</a>
+	    </div>
+	  </div>
+	</div>
+</section>
+
+
+{% include 'Includes/footer.twig' %}
