@@ -1,0 +1,51 @@
+{# Create user -  Modal #}
+<div class="ui modal" id="createModal">
+  <i class="close icon"></i>
+  <div class="header">
+    Create a new user
+  </div>
+  <div class="ui form">
+	<div class="fields">
+		<div class="field">
+		  <label>Name</label>
+		  <input type="text" placeholder="Name">
+		</div>
+		<div class="field">
+		  <label>Email</label>
+		  <input type="text" placeholder="Email">
+		</div>
+
+		<div class="field">
+		  <label>Group</label>
+		  <div class="ui selection dropdown">
+		      <input type="hidden" name="group">
+		      <i class="dropdown icon"></i>
+		      <div class="default text">Group</div>
+		      <div class="menu">
+		          <div class="item" data-value="0">Admin</div>
+		          <div class="item" data-value="1">Writer</div>
+		          <div class="item" data-value="2">User</div>
+		      </div>
+		  </div>
+		</div>
+		<div class="field">
+		  <label>Status</label>
+		  <div class="ui selection dropdown">
+		      <input type="hidden" name="group">
+		      <i class="dropdown icon"></i>
+		      <div class="default text">Status</div>
+		      <div class="menu">
+		          <div class="item" data-value="0">Allowed</div>
+		          <div class="item" data-value="1">Banished</div>
+		      </div>
+		  </div>
+		</div>
+	</div>
+</div>
+  <div class="actions">
+    <div class="ui button">Cancel</div>
+    <div class="ui button black">Confirm</div>
+  </div>
+</div>
+
+{# End Create suer - Modal #}

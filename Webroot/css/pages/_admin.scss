@@ -1,0 +1,63 @@
+body
+{
+	background-color:#f7f7f7;
+    .topContent
+    {
+    	padding-top:2em;
+    	display:flex;
+    	padding-top: 55px;
+	    padding-bottom: 26px;
+	    background-color: white;
+    	.ui.search
+    	{
+    		display:flex;
+    		flex:1;
+    		.ui.input
+    		{
+    			margin: 0 auto;
+				width: 40%;
+    		}
+    	}
+    }
+	main
+	{
+	    padding: 0 3vw;
+	    h2.ui.header
+	    {
+	    	font-size: 1.4rem;
+	    }
+	    &.admin
+	    {
+	    	>button.ui.button
+	    	{
+    		    margin: 21px auto 0 0;
+    			display: block;
+	    	}
+			.userList
+			{
+				display: flex;
+				flex-wrap:wrap;
+				padding:0.5em;
+				.ui.card
+				{
+					margin:0 20px 20px 0;
+					.content:first-child
+					{
+						display:flex;
+						justify-content: space-between;
+						align-items: center;
+						&:after
+						{
+							display:none;
+						}
+					}
+				}
+				.ui.card + .ui.card
+				{
+					//margin-left:2em;
+				}
+			}
+	    }
+	}
+	//background-color:yellow;
+}

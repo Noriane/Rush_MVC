@@ -64,6 +64,7 @@ class LoginController extends AppController
         if ($verif_pwd)
         {
             $_SESSION['log'] = $id;
+            $_SESSION['groupe'] = $this->_datasUser[0]['groupe'];
             if (!empty($_POST['remember_me']) && $_POST['remember_me'] == 'on')
             {
                 setcookie('log', $id, time()+3600);

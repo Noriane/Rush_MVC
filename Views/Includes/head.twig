@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>HomePage</title>
+		<title>Admin</title>
 
 		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="Webroot/css/index.css">
 
 		<script
 		  src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -11,9 +12,7 @@
 		  crossorigin="anonymous"></script>
 		<script src="semantic/dist/semantic.min.js"></script>
 		<style type="text/css">
-			  body {
-			    background-color: #FFFFFF;
-			  }
+
 			  .ui.menu .item img.logo {
 			    margin-right: 1.5em;
 			  }
@@ -32,33 +31,7 @@
 			  	margin-top:100px;
 			  }
   		</style>
+ 
 	</head>
 
 	<body>
-
-
-		{% include 'Includes/header.twig' %}
-
-		<div>
-
-			{% for i in 0..(articles|length - 1) %}
-
-			<article>
-
-				<div class="ui raised very padded text container segment">
-					<div>
-					    <h2 class="ui header">{{articles[i]['title']}}</h2>
-					    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
-					    <h3>{{articles[i]['cat']}}</h3>
-
-					</div>
-				 </div>
-			</article>
-
-			{% endfor %}
-
-		</div>
-
-	</body>
-
-</html>

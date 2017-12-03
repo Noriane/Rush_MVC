@@ -24,5 +24,13 @@
 	      <a class="item" href="#">Link Item</a>
 	    </div>
 	  </div>
+
+	  {% if session['groupe'] == 'ADMIN' %}
+	  	<a href="admin" class="item">Admin</a>
+	  {% endif %}
+
+	  {% if session['groupe'] == 'ADMIN' or  session['groupe'] == 'WRITER'%}
+	  	<a href="#" class="item">Write a new artcile</a>
+	  {% endif %}
 	</div>
 </div>

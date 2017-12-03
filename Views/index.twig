@@ -1,75 +1,36 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>HomePage</title>
+{% include 'Includes/head.twig' %}
 
-		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+{% include 'Includes/header.twig' %}
 
-		<script
-		  src="https://code.jquery.com/jquery-3.1.1.min.js"
-		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-		  crossorigin="anonymous"></script>
-		<script src="semantic/dist/semantic.min.js"></script>
-		<style type="text/css">
-			  body {
-			    background-color: #FFFFFF;
-			  }
-			  .ui.menu .item img.logo {
-			    margin-right: 1.5em;
-			  }
-			  .main.container {
-			    margin-top: 7em;
-			  }
-			  .wireframe {
-			    margin-top: 2em;
-			  }
-			  .ui.footer.segment {
-			    margin: 5em 0em 0em;
-			    padding: 5em 0em;
-			  }
-			  article
-			  {
-			  	margin-top:100px;
-			  }
-  		</style>
-	</head>
+<div>
 
-	<body>
+	{% for i in 0..(articles|length - 1) %}
 
+	<article>
 
-		{% include 'Includes/header.html' %}
+		<div class="ui raised very padded text container segment">
+			<div>
+				<img src="{{articles[i]['url_img']}}">
+			</div>
+			<div>
+			    <h2 class="ui header">{{articles[i]['title']}}</h2>
+			    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
+			    <h3>{{articles[i]['cat']}}</h3>
+			    <p>{{articles[i]['content']}}</p>
+			</div>
+			<div>
+				<div>
+					<p>Tag1</p>
+					<p>Tag2</p>
+					<p>Tag3</p>
+				</div>
+				<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
+			</div>
+		 </div>
+	</article>
 
-		<div>
+	{% endfor %}
 
-			{% for i in 0..(articles|length - 1) %}
+</div>
 
-			<article>
-
-				<div class="ui raised very padded text container segment">
-					<div>
-						<img src="{{articles[i]['url_img']}}">
-					</div>
-					<div>
-					    <h2 class="ui header">{{articles[i]['title']}}</h2>
-					    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
-					    <h3>{{articles[i]['cat']}}</h3>
-					    <p>{{articles[i]['content']}}</p>
-					</div>
-					<div>
-						<div>
-							<p>Tag1</p>
-							<p>Tag2</p>
-							<p>Tag3</p>
-						</div>
-						<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
-					</div>
-				 </div>
-			</article>
-
-			{% endfor %}
-
-		</div>
-
-	</body>
-
-</html>
+{% include 'Includes/footer.twig' %}

@@ -1,0 +1,175 @@
+
+{% include 'Includes/head.twig' %}
+
+{% include 'Includes/header.twig' %}
+
+{# Edit user infos for Admin - Modal #}
+{% include 'Modals/editUser.twig' %}
+
+{# Confirm delete user - Modal #}
+{% include 'Modals/confirmDelUser.twig' %}
+
+{# Confirm create user - Modal #}
+{% include 'Modals/createUser.twig' %}
+
+
+
+<!--<h1>Manage users</h1>-->
+<div class="topContent">
+	<div class="ui search">
+		<div class="ui icon input">
+			<input type="prompt" type="text" placeholder="Search for user...">
+			<i class="search icon"></i>
+		</div>
+		<div class="results"></div>
+	</div>
+</div>
+
+<main class="admin">
+	<button class="ui button primary create">Create a new user</button>
+
+	<h2 class="ui dividing header">Admin</h2>
+
+	<ul class="userList">
+		{% for i in 0..(users|length - 1) %}
+			{% if users[i]['groupe'] == "ADMIN" %}
+
+				 <li class="ui card admin">
+				  <div class="content">
+				    <div class="header username">{{users[i]['username']}}</div>
+				    {% if users[i]['ban'] == '1' %}
+				    	<a class="ui red label">Ban</a>
+				    {% endif %}
+				  </div>
+				  <div class="content">
+				    <h4 class="ui sub header">Role : {{users[i]['groupe']}}</h4>
+				    <div class="ui small feed">
+				      <div class="event">
+				        <div class="content">
+				          <div class="email">
+				             Email : <a href="#">{{users[i]['email']}}</a>
+				          </div>
+				        </div>
+				      </div>
+				      <div class="event">
+				        <div class="content">
+				          <div class="date">
+				             Join the : {{users[i]['create_date'] | date("m/d/Y")}}
+				          </div>
+				        </div>
+				      </div>
+				      <div class="event">
+				        <div class="content">
+				          <div class="date">
+				             Last edit the : {{users[i]['edit_date'] | date("m/d/Y")}}
+				          </div>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="extra content">
+				    <button class="ui button edit">Edit</p>
+					<button class="ui button delete">Delete</p>
+				  </div>
+				</li>
+
+			{% endif %}
+		{% endfor %}
+	</ul>
+
+	<h2 class="ui dividing header">Writer</h2>
+	<ul class="userList">
+		{% for i in 0..(users|length - 1) %}
+			{% if users[i]['groupe'] == "WRITER" %}
+				<li class="ui card writter">
+					  <div class="content">
+					    <div class="header username">{{users[i]['username']}}</div>
+					    {% if users[i]['ban'] == '1' %}
+					    	<a class="ui red label">Ban</a>
+					    {% endif %}
+					  </div>
+					  <div class="content">
+					    <h4 class="ui sub header">Role : {{users[i]['groupe']}}</h4>
+					    <div class="ui small feed">
+					      <div class="event">
+					        <div class="content">
+					          <div class="email">
+					             Email : <a href="#">{{users[i]['email']}}</a>
+					          </div>
+					        </div>
+					      </div>
+					      <div class="event">
+					        <div class="content">
+					          <div class="date">
+					             Join the : {{users[i]['create_date'] | date("m/d/Y")}}
+					          </div>
+					        </div>
+					      </div>
+					      <div class="event">
+					        <div class="content">
+					          <div class="date">
+					             Last edit the : {{users[i]['edit_date'] | date("m/d/Y")}}
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="extra content">
+					    <button class="ui button edit">Edit</p>
+						<button class="ui button delete">Delete</p>
+					  </div>
+					</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+
+	<h2 class="ui dividing header">User</h2>
+	<ul class="userList">
+		{% for i in 0..(users|length - 1) %}
+			{% if users[i]['groupe'] == "USER" %}
+				<li class="ui card user">
+					  <div class="content">
+					    <div class="header username">{{users[i]['username']}}</div>
+					    {% if users[i]['ban'] == '1' %}
+				    		<a class="ui red label">Ban</a>
+				    	{% endif %}
+					  </div>
+					  <div class="content">
+					    <h4 class="ui sub header">Role : {{users[i]['groupe']}}</h4>
+					    <div class="ui small feed">
+					      <div class="event">
+					        <div class="content">
+					          <div class="email">
+					             Email : <a href="#">{{users[i]['email']}}</a>
+					          </div>
+					        </div>
+					      </div>
+					      <div class="event">
+					        <div class="content">
+					          <div class="date">
+					             Join the : {{users[i]['create_date'] | date("m/d/Y")}}
+					          </div>
+					        </div>
+					      </div>
+					      <div class="event">
+					        <div class="content">
+					          <div class="date">
+					             Last edit the : {{users[i]['edit_date'] | date("m/d/Y")}}
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="extra content">
+					    <button class="ui button edit">Edit</p>
+						<button class="ui button delete">Delete</p>
+					  </div>
+					</li>
+			{% endif %}
+
+		{% endfor %}
+	</ul>
+
+</main>
+
+{% include 'Includes/footer.twig' %}

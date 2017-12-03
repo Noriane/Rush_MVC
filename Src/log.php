@@ -23,7 +23,7 @@ class Log
         $donne = $this->_bdd->SQLquery();
         if ($donne[0]["groupe"] == "ADMIN") {
             return "ADMIN";
-        } elseif ($donne[0]["group"] == "WRITER") {
+        } elseif ($donne[0]["groupe"] == "WRITER") {
             return "WRITER";
         } else {
             return "USER";
