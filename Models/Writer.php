@@ -29,11 +29,9 @@ class WriterModel extends AModel
     {
         $sql = "SELECT COUNT(id) as 'nb' FROM comments WHERE articles_id = '$id'";
         $this->_connect->setQuery($sql);
-        $res = $this->_connect->SQLquery();
-        if (empty($res["nb"])) {
+        $ret = $this->_connect->SQLquery();
+        if (empty($ret)) {
             $ret =0;
-        } else {
-            $ret = $res["nb"];
         }
         return $ret;
     }
