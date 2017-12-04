@@ -43,4 +43,17 @@ class CommentModel extends AModel
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
     }
+
+    public function nb_comment($id)
+    {
+        $sql = "SELECT COUNT(id) as 'nb' FROM comments WHERE articles_id = '$id'";
+        $this->_connect->setQuery($sql);
+        $res = $this->_connect->SQLquery();
+        if (empty($res["nb"])) {
+            $ret =0;
+        } else {
+            $ret = $res["nb"];
+        }
+        return $ret;
+    }
 }
