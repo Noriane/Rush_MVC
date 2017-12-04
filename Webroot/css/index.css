@@ -79,7 +79,8 @@ form.addComments {
 
 .listComments {
   background-color: white;
-  padding: 2em; }
+  padding: 2em;
+  margin: 1em 0; }
 
 .homeArticle {
   background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
