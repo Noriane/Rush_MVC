@@ -65,7 +65,12 @@ class WriterArticleController extends WriterMainController
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['article'], $data);
                 }
-                $this->_params['article']['tags']= $this->_model->tags($this->_params['article']['tag_id']);
+                foreach ($tag_temp as $temp) {
+                  while ($data_tag = $temp->fetch(PDO::FETCH_ASSOC)) {
+                      $this->_params['articles']['tags'] = $data_tag;
+                  }
+                }
+
                 $this->_params['data'] = $this->_modelComment->comments($id_article);
 
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
