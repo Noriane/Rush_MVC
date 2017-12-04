@@ -100,7 +100,7 @@ $router->post('/writer/:id', function ($id) {
     require_once PATH."/Controllers/WriterArticleController.php";
     require_once PATH."/Views/View.php";
 
-    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig",$id)->run();
 });
 
 $router->get('/writer/create', function () {
