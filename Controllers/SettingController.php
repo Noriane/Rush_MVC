@@ -6,6 +6,7 @@ class SettingController extends RegisterController
     {
         if (!empty($this->_params['user'])) {
             if (!empty($_POST['modif_user'])) {
+            
                 $this->modif_user();
             }
 
@@ -16,34 +17,25 @@ class SettingController extends RegisterController
             while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                 array_push($this->_params['all_data_user'], $data);
             }
-            unset($this->_params['all_data_user']['password']);
-            unset($this->_params['all_data_user']['ban']);
+
             unset($this->_params['data']);
         } else {
-          $this->redirect();
+            $this->redirect();
         }
     }
 
     private function modif_user()
     {
         $email = $_POST['modif_user']['email'];
-        $res = $this->_model->check_email($_POST['modif_user']['email']);
-        
-        if (!empty($res)) {
-            if ($res[0]['email'] == $email) {
-                $_SESSION['message'] = "This email is already taken";
-                return false;
-            }
 
-            foreach ($_POST['modif_user'] as $key => $value) {
-                $this->_datasUser[$key] = $this->secure_input($value);
-            }
+        foreach ($_POST['modif_user'] as $key => $value) {
+            $this->_datasUser[$key] = $this->secure_input($value);
+        }
 
-            if (empty($_POST['modif_user']['password'])) {
-                $this->_model->modif_user_sp($this->_datasUser);
-            } else {
-                $this->hashPassword();
-            }
+        if (empty($_POST['modif_user']['password'])) {
+            $this->_model->modif_user_sp($this->_datasUser);
+        } else {
+            $this->hashPassword();
         }
     }
 
