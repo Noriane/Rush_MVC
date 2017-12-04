@@ -10,6 +10,13 @@ class WriterArticleModel extends AModel
         return $this->_connect->SQLquery(false);
     }
 
+    public function categories()
+    {
+      $sql = "SELECT * FROM categories";
+
+
+    }
+
     public function add_article($article)
     {
         $title = $article['title'];

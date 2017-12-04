@@ -16,6 +16,8 @@ class WriterArticleController extends WriterMainController
         //verif si c'est un admin ou un writer
         if ((($this->_params['user']['group'] == "ADMIN") || ($this->_params['user']['group'] == "WRITER")) && ($this->_params['user']['ban'] == false)) {
 
+          global $id;
+
               //si reçois add_article avec toutes les données nécessaires
             if (!empty($_POST['add_categorie'])) {
                 $cat = $this->add_categorie();
