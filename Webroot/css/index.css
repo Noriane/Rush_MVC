@@ -34,6 +34,28 @@ body {
           align-items: center; }
           body main.admin .userList .ui.card .content:first-child:after {
             display: none; }
+      body main.admin .userList form.editUser {
+        display: none;
+        flex-direction: column;
+        padding: 1em;
+        height: 100%;
+        justify-content: space-between; }
+        body main.admin .userList form.editUser .fields {
+          flex-direction: column;
+          align-items: flex-start;
+          display: flex; }
+          body main.admin .userList form.editUser .fields.input {
+            width: 100%;
+            margin: 0 auto; }
+          body main.admin .userList form.editUser .fields.drop {
+            display: flex;
+            flex-direction: row; }
+          body main.admin .userList form.editUser .fields input {
+            margin-bottom: 8px; }
+        body main.admin .userList form.editUser .ui.selection.dropdown {
+          min-width: inherit; }
+        body main.admin .userList form.editUser.visible {
+          display: flex; }
 
 section.login.form, section.register.form {
   background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
@@ -184,7 +206,7 @@ body {
   color: white; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .error {
   color: tomato; }
