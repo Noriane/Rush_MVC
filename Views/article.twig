@@ -2,12 +2,33 @@
 {% include 'Includes/head.twig' %}
 {% include 'Includes/header.twig' %}
 
-
+<div class="imgContainer">
+	<img class="fullImage"  src="{{path}}/{{article[0]['url_img']}}">
+</div>
 <div class="ui main text container">
-	<h1 class="ui header">Titre de l'article</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis elit vel arcu euismod egestas ac ut leo. Aliquam diam sapien, viverra sit amet libero id, ultricies viverra urna. Integer erat dolor, vehicula non dui eu, tincidunt dapibus tellus. Quisque maximus dolor scelerisque bibendum faucibus. Praesent risus lorem, convallis vitae molestie id, tempus eu lectus. Curabitur orci quam, euismod vitae dui nec, efficitur lacinia turpis. Mauris non risus ac sem lobortis congue. Cras viverra orci id nisl sollicitudin laoreet. In sed euismod est, in aliquet orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-	Mauris molestie lacus a diam iaculis, non aliquet sapien gravida. Sed nec odio eget purus viverra tempus ut vitae justo. Maecenas eu risus imperdiet est aliquet scelerisque. Nam blandit odio eget interdum vehicula. Quisque quis ligula bibendum, vestibulum ante at, vestibulum mauris. Phasellus eget interdum elit, eu sagittis velit. Proin sodales elit mi, malesuada lacinia magna fermentum eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque augue ex, pulvinar ut sapien in, pharetra consequat libero. Integer posuere eu mi in lacinia. Quisque vitae ante pulvinar, sollicitudin diam vitae, lacinia sapien. Donec lacinia ultricies vestibulum. Maecenas laoreet consequat condimentum. Nullam lobortis, libero sed lacinia dictum, libero dui fringilla dolor, vitae consequat neque lectus eu enim. Proin eleifend diam id arcu ultricies mattis. In facilisis fermentum lacus, at scelerisque magna condimentum in.</p>
+	<div class="main-content">
+		<div>
+		    <h1 class="ui header">{{article[0]['title']}}</h1>
+		    <p class="author">Written by <span><a>{{article[i]['username']}}</a> the <a>{{article[0]['create_date'] | date("m/d/Y")}}</a></span></p>
+		    <p class="editDate">Last edit the : {{article[0]['edit_date'] | date("m/d/Y")}}</p>
+			<div class="ui divider"></div>
+			<div class="flexContainer tags">
+			    <div class="ui label category {{article[0]['cat']}}">{{article[0]['cat']}}</div>
+			    {% if article[0]['tags']|length > 0 %}
+				<div class="tagsContainer">
+					{% for j in 0..(article[0]['tags']|length - 1) %}
+						<span class="tag ui label">{{article[0]['tags']['name']}}</span>
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+		    <p class="content">{{article[0]['content']}}</p>
+		</div>
+		<div class="ui divider"></div>
+		<div>
+			<p><span>{{article['nb_comment'] == null ? 0 : article['nb_comment']}} </span>Comments</p>
+		</div>
+	</div>
 </div>
 
 

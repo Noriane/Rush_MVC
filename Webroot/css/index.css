@@ -57,6 +57,17 @@ body {
         body main.admin .userList form.editUser.visible {
           display: flex; }
 
+.imgContainer {
+  width: 100%;
+  height: 300px;
+  overflow: hidden; }
+
+.fullImage {
+  width: 100%; }
+
+.ui.main.text.container {
+  margin-top: 5.5em; }
+
 .homeArticle {
   background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
   background-repeat: no-repeat;
@@ -72,16 +83,6 @@ body {
         margin-bottom: 0.55em; }
         .homeArticle article > div.ui.raised > div.main-content > div:first-child h2:first-letter {
           text-transform: capitalize; }
-      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.editDate {
-        color: rgba(0, 0, 0, 0.5);
-        font-style: italic; }
-      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.author {
-        margin-bottom: 0.2em; }
-      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.content {
-        margin-top: 1em; }
-      .homeArticle article > div.ui.raised > div.main-content > div:first-child .flexContainer.tags {
-        display: flex;
-        justify-content: space-between; }
 
 section.login.form, section.register.form, section.settings.form {
   background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
@@ -254,5 +255,19 @@ body {
 article {
   padding-top: 100px;
   margin-top: 0 !important; }
+
+p.editDate {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic; }
+
+p.author {
+  margin-bottom: 0.2em; }
+
+p.content {
+  margin-top: 1em; }
+
+.flexContainer.tags {
+  display: flex;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=index.css.map */
