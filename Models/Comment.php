@@ -4,7 +4,7 @@ class CommentModel extends AModel
 {
     public function comments($id)
     {
-        $sql= "SELECT comments.id, content, users.username, comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id WHERE articles_id = '$id' ORDER BY comments.id DESC";
+        $sql= "SELECT comments.id, content, author_id, users.username, comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id WHERE articles_id = '$id' ORDER BY comments.id DESC";
 
         $this->_connect->setQuery($sql);
         return $this->_connect->SQLquery(false);

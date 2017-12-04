@@ -67,7 +67,7 @@ class WriterArticleController extends WriterMainController
                 }
                 foreach ($tag_temp as $temp) {
                   while ($data_tag = $temp->fetch(PDO::FETCH_ASSOC)) {
-                      $this->_params['articles']['tags'] = $data_tag;
+                      $this->_params['articles'][0]['tags'] = $data_tag;
                   }
                 }
 
