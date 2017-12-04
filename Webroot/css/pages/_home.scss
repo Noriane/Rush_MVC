@@ -1,0 +1,25 @@
+.homeArticle
+{
+	article
+	{
+		>div.ui.raised
+		{
+			padding:0;
+			img 
+			{
+				width: 100%;
+			}
+			>div.main-content
+			{
+				padding:2em;
+				h2
+				{
+					&:first-letter
+					{
+						text-transform:capitalize;
+					}
+				}
+			}
+		}
+	}
+}
