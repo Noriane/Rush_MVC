@@ -8,12 +8,12 @@
 </div>
 
 <main class="writer create">
-	<form method="POST" action="writerCreate">
+	<form method="POST" action="writer">
 		<div class="ui form">
 			<!-- Title -->
 		  <div class="field">
 		    <label>Title</label>
-		    <input type="text">
+		    <input type="text" name="add_article['title']">
 		  </div>
 		  <div class="ui divider"></div>
 
@@ -21,7 +21,7 @@
 		  <div class="field">
 		  	<label>Upload Image</label>
 		  	<div class="flexContainer">
-			  	<input type="file" name="pic" accept="image/*">
+			  	<input type="file" accept="image/*" name="add_article['url_img']">
 		  	</div>
 		  </div>
 		  <div class="ui divider"></div>
@@ -32,7 +32,7 @@
 		  	<div class="flexContainer">
 		  		<div class="flexContainer choose active">
 				  	<div class="ui selection dropdown">
-						<input type="hidden" name="category">
+						<input type="hidden" name="add_article['categories_id']">
 						<i class="dropdown icon"></i>
 						<div class="default text">Category</div>
 						<div class="menu">
@@ -45,7 +45,6 @@
 		  		</div>
 				<div class="flexContainer add hidden">
 					<input type="text">	
-					<div class="button ui primary">Add</div>
 					<div class="button ui cancel">Cancel</div>
 				</div>
 		  	</div>
@@ -57,7 +56,7 @@
 		  	<div class="flexContainer">
 		  		<div class="flexContainer choose active">
 				  	<div class="ui selection dropdown">
-						<input type="hidden" name="category">
+						<input type="hidden" name="add_article['tag_id']">
 						<i class="dropdown icon"></i>
 						<div class="default text">tag</div>
 						<div class="menu">
@@ -70,7 +69,6 @@
 		  		</div>
 				<div class="flexContainer add hidden">
 					<input type="text">	
-					<div class="button ui primary">Add</div>
 					<div class="button ui cancel">Cancel</div>
 				</div>
 		  	</div>
@@ -81,7 +79,7 @@
 		  <!-- Content -->
 		  <div class="field">
 		    <label>Content</label>
-		    <textarea></textarea>
+		    <textarea name="add_article['content']"></textarea>
 		  </div>
 		</div>
 
