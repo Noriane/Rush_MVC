@@ -74,7 +74,7 @@ class AdminController extends RegisterController
     {
         $id = $_GET['delete_user'];
         $check_admin = new log($id);
-        if ($check_admin != "ADMIN") {
+        if ($check_admin->is_group() != "ADMIN") {
             $this->_model->delete_user($id);
         }
     }
