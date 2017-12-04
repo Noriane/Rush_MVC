@@ -25,11 +25,12 @@ class AdminModel extends AModel
 
     public function modif_user($user)
     {
-        $name = $user['name'];
+        $id = $user['id'];
+        $name = $user['username'];
         $ban = $user['ban'];
         $email = $user['email'];
         $group = $user['groupe'];
-        $sql = "UPDATE users username = '$name',email = '$email', groupe = '$group',ban = $ban, edit_date = NOW() WHERE id = '$id'";
+        $sql = "UPDATE users SET username = '$name',email = '$email', groupe = '$group',ban = $ban, edit_date = NOW() WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
@@ -37,7 +38,7 @@ class AdminModel extends AModel
 
     public function delete_user($id)
     {
-        $sql = " DELETE FROM users WHERE id = '$id'";
+        $sql = "DELETE FROM users WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
