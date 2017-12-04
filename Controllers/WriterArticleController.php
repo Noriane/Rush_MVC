@@ -1,6 +1,6 @@
 <?php
 
-class WriterMainController extends WriterMainController
+class WriterArticleController extends WriterMainController
 {
     private $_modelComment;
 
