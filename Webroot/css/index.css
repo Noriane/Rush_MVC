@@ -63,8 +63,15 @@ body {
     width: 100%; }
   .homeArticle article > div.ui.raised > div.main-content {
     padding: 2em; }
-    .homeArticle article > div.ui.raised > div.main-content h2:first-letter {
+    .homeArticle article > div.ui.raised > div.main-content > div:first-child h2:first-letter {
       text-transform: capitalize; }
+    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.editDate {
+      color: rgba(0, 0, 0, 0.5);
+      font-style: italic; }
+    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.author {
+      margin-bottom: 0.2em; }
+    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.content {
+      margin-top: 1em; }
 
 section.login.form, section.register.form {
   background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
