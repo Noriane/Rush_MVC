@@ -11,9 +11,9 @@ class View
         $params['path'] = BASE_URL;
 
 
-        echo "<pre>";
-        var_dump($params);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($params);
+        // echo "</pre>";
 
 
         $template = $twig->loadTemplate($file);
