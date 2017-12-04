@@ -5,17 +5,18 @@ abstract class AppController
     protected $_model;
     protected $_file;
     protected $_view;
+    protected $_id;
     protected $_params = [];
     protected $_log;
     protected $redirected = false;
     protected static $_instance = [];
 
-    protected function __construct($model, $file)
+    protected function __construct($model, $file, $id = null)
     {
         $this->loadModel($model);
         $this->user_id();
         $this->_file = $file;
-
+        $this->_id = $id;
         if (!is_integer($this->_log)) {
             $login = $this->_log;
             $this->_params['user']['group'] = $login->is_group();
@@ -25,15 +26,15 @@ abstract class AppController
     }
 
     //retourn l'instance en cours ou en crée une
-    public static function getInstance($model, $file = null)
+    public static function getInstance($model, $file = null, $id=null)
     {
         $cls = get_called_class(); // renvoi le nom de la vraie classe (pas AppController)
         if (!isset(self::$_instance[$cls])) {
-            self::$_instance[$cls] = new $cls($model, $file);
+            self::$_instance[$cls] = new $cls($model, $file,$id);
         }
         return self::$_instance[$cls];
     }
-    
+
     protected function loadModel($model)
     {
         $this->_model = new $model();

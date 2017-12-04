@@ -20,7 +20,7 @@ $router->get('/articles/:id', function ($id) {
     require_once PATH."/Controllers/ArticleController.php";
     require_once PATH."/Views/View.php";
 
-    ArticleController::getInstance("ArticleModel", "article.twig")->run();
+    ArticleController::getInstance("ArticleModel", "article.twig",$id)->run();
 });
 
 $router->get('/admin/:id', function ($id) {
@@ -29,7 +29,7 @@ $router->get('/admin/:id', function ($id) {
     require_once PATH."/Controllers/AdminController.php";
     require_once PATH."/Views/View.php";
 
-    AdminController::getInstance("AdminModel", "admin.twig")->run();
+    AdminController::getInstance("AdminModel", "admin.twig",$id)->run();
 });
 
 $router->get('/admin', function () {

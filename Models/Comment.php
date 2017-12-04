@@ -4,7 +4,7 @@ class CommentModel extends AModel
 {
     public function comments($id)
     {
-        $sql= "SELECT comments.id, content, users.username,comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id INNER JOIN categories ON comments.categories_id = categories.id WHERE articles_id = '$id' ORDER BY comments.id DESC;";
+        $sql= "SELECT comments.id, content, users.username, comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id WHERE articles_id = '$id' ORDER BY comments.id DESC";
 
         $this->_connect->setQuery($sql);
         return $this->_connect->SQLquery(false);
@@ -16,7 +16,7 @@ class CommentModel extends AModel
         $author = $comment['author_id'];
         $art = $comment['articles_id'];
 
-        $sql = "INSERT INTO comments VALUES (null, '$content','$author','$art',NOW(),NOW()";
+        $sql = "INSERT INTO comments VALUES (null, '$content','$author','$art',NOW(),NOW())";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
@@ -38,7 +38,7 @@ class CommentModel extends AModel
     //supprime le comment
     public function delete_comment($id)
     {
-        $sql = " DELETE FROM comments WHERE id = '$id'";
+        $sql = "DELETE FROM comments WHERE id = '$id'";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);

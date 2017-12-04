@@ -6,7 +6,7 @@ class AdminController extends RegisterController
     {
         //verif si c'est un admin
         if ($this->_params['user']['group'] == "ADMIN") {
-
+          var_dump($_POST);
             //si reçois add_users avec toutes les données nécessaires
             if (!empty($_POST['add_user'])) {
                 $this->checkDatas();
