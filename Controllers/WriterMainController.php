@@ -11,28 +11,28 @@ class WriterMainController extends AppController
             if (!empty($_POST['add_article'])) {
                 $router = new Router("");
 
-                $router->post('/', function () {
-                    require_once PATH."/Models/Writer.php";
+                $router->post('/writer', function () {
+                    require_once PATH."/Models/WriterArticle.php";
                     require_once PATH."/Controllers/WriterArticleController.php";
                     require_once PATH."/Views/View.php";
 
-                    ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
+                    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
                 });
-              return false;
+              exit();
             }
 
             //si reçois modif_article avec tous les champs user sauf password
             if (!empty($_POST['modif_article'])) {
                 $router = new Router("");
 
-                $router->post('/', function () {
-                    require_once PATH."/Models/Writer.php";
+                $router->post('/writer', function () {
+                    require_once PATH."/Models/WriterArticle.php";
                     require_once PATH."/Controllers/WriterArticleController.php";
                     require_once PATH."/Views/View.php";
 
-                    ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
+                    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
                 });
-                return false;
+                exit();
             }
 
             //si reçois delete_article avec un id
