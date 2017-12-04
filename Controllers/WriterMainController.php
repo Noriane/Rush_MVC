@@ -18,6 +18,7 @@ class WriterMainController extends AppController
 
                     ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
                 });
+              return false;
             }
 
             //si reçois modif_article avec tous les champs user sauf password
@@ -31,6 +32,7 @@ class WriterMainController extends AppController
 
                     ArticleController::getInstance("WriterModel", "writerArticle.twig")->run();
                 });
+                return false;
             }
 
             //si reçois delete_article avec un id
