@@ -36,7 +36,7 @@ body {
             display: none; }
 
 section.login.form, section.register.form {
-  background-image: url(../../Webroot/img/mononoke_by_etoli.jpg);
+  background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
   section.login.form > div:first-child, section.register.form > div:first-child {
