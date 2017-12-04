@@ -18,7 +18,6 @@ class AccueilModel extends AModel
         if (empty($ret)) {
             $ret =0;
         }
-        var_dump($ret);
         return $ret;
     }
 }
