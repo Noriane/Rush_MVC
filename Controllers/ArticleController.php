@@ -35,7 +35,7 @@ class ArticleController extends AppController
           }
         }
 
-        $this->_params['article']['nb_comment']= $this->_model->nb_comment($this->_id);
+        $this->_params['comments']['nb_comment']= $this->_model->nb_comment($this->_id);
 
         $this->_params['data']= null;
 
@@ -50,5 +50,29 @@ class ArticleController extends AppController
         }
 
         unset($this->_params['data']);
+    }
+
+    private function add_comment()
+    {
+        $input=[];
+        foreach ($_POST['add_comment'] as $key => $value) {
+            $input[$key] = $this->secure_input($value);
+        }
+        $input['author_id']= $_SESSION["log"];
+        $this->_modelComment->add_comment($input);
+    }
+
+    private function modif_comment()
+    {
+        $input=[];
+        foreach ($_POST['modif_comment'] as $key => $value) {
+            $input[$key] = $this->secure_input($value);
+        }
+        $this->_modelComment->modif_comment($input);
+    }
+
+    private function delete_comment($id)
+    {
+        $this->_modelComment->delete_comment($id);
     }
 }

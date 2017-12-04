@@ -14,16 +14,18 @@ class ArticleModel extends AModel
     {
         $sql = "SELECT COUNT(id) as 'nb' FROM comments WHERE articles_id = '$id'";
         $this->_connect->setQuery($sql);
-        $res = $this->_connect->SQLquery();
+        $ret = $this->_connect->SQLquery();
         if (empty($ret)) {
             $ret =0;
         }
-        var_dump($ret);
         return $ret;
     }
 
-    public function comments($id)
-    {
-      $sql="SELECT content, users.username, comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id";
-    }
+    // public function comments($id)
+    // {
+    //   $sql="SELECT content, users.username, comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id";
+    //
+    //   $this->_connect->setQuery($sql);
+    //   return $this->_connect->SQLquery(false);
+    // }
 }
