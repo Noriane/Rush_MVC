@@ -31,7 +31,7 @@ class ArticleController extends AppController
 
         foreach ($tag_temp as $temp) {
           while ($data_tag = $temp->fetch(PDO::FETCH_ASSOC)) {
-            $this->_params['article']['tags'] = $data_tag;
+            $this->_params['article'][0]['tags'] = $data_tag;
           }
         }
 
