@@ -11,13 +11,14 @@ abstract class AModel
 
   public function tags($tags)
   {
-    $tag_list = trim(explode (',',$tags));
+    $tmp = explode (',',$tags);
+    $tag_list = array_map('trim',$tmp);
 
     $ret = [];
     foreach ($tag_list as $id) {
       $sql = "SELECT name FROM tags WHERE id ='$id'";
       $this->_connect->setQuery($sql);
-      array_push($ret, $this->_connect->SQLquery(false));  
+      array_push($ret, $this->_connect->SQLquery(false));
     }
     return $ret;
   }
