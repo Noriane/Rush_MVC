@@ -57,6 +57,15 @@ body {
         body main.admin .userList form.editUser.visible {
           display: flex; }
 
+.homeArticle article > div.ui.raised {
+  padding: 0; }
+  .homeArticle article > div.ui.raised img {
+    width: 100%; }
+  .homeArticle article > div.ui.raised > div.main-content {
+    padding: 2em; }
+    .homeArticle article > div.ui.raised > div.main-content h2:first-letter {
+      text-transform: capitalize; }
+
 section.login.form, section.register.form {
   background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
   background-repeat: no-repeat;
@@ -180,30 +189,44 @@ body {
 .category.movie {
   background-color: red;
   color: white; }
+  .category.movie:first-letter {
+    text-transform: capitalize; }
 
 .category.book {
   background-color: blue;
   color: white; }
+  .category.book:first-letter {
+    text-transform: capitalize; }
 
 .category.art {
   background-color: yellow;
   color: white; }
+  .category.art:first-letter {
+    text-transform: capitalize; }
 
 .category.exposition {
   background-color: green;
   color: white; }
+  .category.exposition:first-letter {
+    text-transform: capitalize; }
 
 .category.music {
   background-color: pink;
   color: white; }
+  .category.music:first-letter {
+    text-transform: capitalize; }
 
 .category.food {
   background-color: orange;
   color: white; }
+  .category.food:first-letter {
+    text-transform: capitalize; }
 
 .category.event {
   background-color: purple;
   color: white; }
+  .category.event:first-letter {
+    text-transform: capitalize; }
 
 .hidden {
   display: none !important; }

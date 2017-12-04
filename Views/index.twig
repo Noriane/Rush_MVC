@@ -2,7 +2,7 @@
 
 {% include 'Includes/header.twig' %}
 
-<div>
+<div class="homeArticle">
 
 	{% for i in 0..(articles|length - 1) %}
 
@@ -12,19 +12,22 @@
 			<div>
 				<img src="{{articles[i]['url_img']}}">
 			</div>
-			<div>
-			    <h2 class="ui header">{{articles[i]['title']}}</h2>
-			    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
-			    <h3>{{articles[i]['cat']}}</h3>
-			    <p>{{articles[i]['content']}}</p>
-			</div>
-			<div>
+			<div class="main-content">
 				<div>
-					<p>Tag1</p>
-					<p>Tag2</p>
-					<p>Tag3</p>
+				    <h2 class="ui header">{{articles[i]['title']}}</h2>
+				    <div class="ui label category {{articles[i]['cat']}}">{{articles[i]['cat']}}</div>
+				    <p>Written by <span>{{articles[i]['username']}}</span></p>
+				    <p><span>{{articles[i]['create_date'] | date("m/d/Y")}}</span> | <span>{{articles[i]['edit_date'] | date("m/d/Y")}}</span></p>
+				    <p>{{articles[i]['content']}}</p>
 				</div>
-				<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
+				<div>
+					<div>
+						<p>Tag1</p>
+						<p>Tag2</p>
+						<p>Tag3</p>
+					</div>
+					<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
+				</div>
 			</div>
 		 </div>
 	</article>
