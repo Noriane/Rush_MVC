@@ -102,7 +102,7 @@ class WriterArticleController extends WriterMainController
         $input=[];
 
         $uploaddir = PATH."Webroot/Img/";
-        $uploadfile = $uploaddir . basename($this->secure_input($_POST['modif_article']['url_img']));
+        $uploadfile = $uploaddir . basename($this->secure_input($_POST['add_article']['url_img']));
 
         if (move_uploaded_file($_POST['add_article']['url_img'], $uploadfile)) {
             echo "Le fichier est valide, et a été téléchargé avec succès.\n";
