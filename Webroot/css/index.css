@@ -60,6 +60,43 @@ section.login.form, section.register.form {
           display: inline-block;
           margin-right: 5px; }
 
+body {
+  background-color: #f7f7f7; }
+  body .topContent.writer {
+    padding-top: 2em;
+    display: flex;
+    padding-top: 55px;
+    padding-bottom: 26px;
+    background-image: url(../../Webroot/Img/mononoke.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom; }
+    body .topContent.writer .ui.search {
+      display: flex;
+      flex: 1; }
+      body .topContent.writer .ui.search .ui.input {
+        margin: 0 auto;
+        width: 40%; }
+  body main {
+    padding: 0 3vw; }
+    body main h2.ui.header {
+      font-size: 1.4rem; }
+    body main.admin > button.ui.button {
+      margin: 21px auto 0 0;
+      display: block; }
+    body main.admin .userList {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0.5em; }
+      body main.admin .userList .ui.card {
+        margin: 0 20px 20px 0; }
+        body main.admin .userList .ui.card .content:first-child {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          body main.admin .userList .ui.card .content:first-child:after {
+            display: none; }
+
 .ui.modal .ui.form .fields {
   padding: 2em; }
   .ui.modal .ui.form .fields .field {
