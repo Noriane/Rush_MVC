@@ -5,34 +5,41 @@
 <div class="homeArticle">
 
 	{% for i in 0..(articles|length - 1) %}
+		<article>
 
-	<article>
-
-		<div class="ui raised very padded text container segment">
-			<div>
-				<img src="{{articles[i]['url_img']}}">
-			</div>
-			<div class="main-content">
+			<div class="ui raised very padded text container segment">
 				<div>
-				    <h2 class="ui header">{{articles[i]['title']}}</h2>
-				    <p class="author">Written by <span><a>{{articles[i]['username']}}</a> the <a>{{articles[i]['create_date'] | date("m/d/Y")}}</a></span></p>
-				    <p class="editDate">Last edit the : {{articles[i]['edit_date'] | date("m/d/Y")}}</p>
-					<div class="ui divider"></div>
-				    <div class="ui label category {{articles[i]['cat']}}">{{articles[i]['cat']}}</div>
+				<a href="{{path}}/articles/{{articles[i]['id']}}">
+					<img src="{{articles[i]['url_img']}}">
+				</a>
+				</div>
+				<div class="main-content">
 					<div>
-						<p>Tag1</p>
-						<p>Tag2</p>
-						<p>Tag3</p>
+					    <a href="{{path}}/articles/{{articles[i]['id']}}"><h2 class="ui header">{{articles[i]['title']}}</h2></a>
+					    <p class="author">Written by <span><a>{{articles[i]['username']}}</a> the <a>{{articles[i]['create_date'] | date("m/d/Y")}}</a></span></p>
+					    <p class="editDate">Last edit the : {{articles[i]['edit_date'] | date("m/d/Y")}}</p>
+						<div class="ui divider"></div>
+						<div class="flexContainer tags">
+						    <div class="ui label category {{articles[i]['cat']}}">{{articles[i]['cat']}}</div>
+						    {% if articles[i]['tags']|length > 0 %}
+							<div class="tagsContainer">
+								{% for j in 0..(articles[i]['tags']|length - 1) %}
+									<span class="tag ui label">{{articles[i]['tags']['name']}}</span>
+								{% endfor %}
+							</div>
+							{% endif %}
+						</div>
+					    <p class="content">{{articles[i]['content']}}</p>
 					</div>
-				    <p class="content">{{articles[i]['content']}}</p>
+					<div class="ui divider"></div>
+					<div>
+						<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
+					</div>
 				</div>
-				<div class="ui divider"></div>
-				<div>
-					<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
-				</div>
-			</div>
-		 </div>
-	</article>
+			 </div>
+		</article>
+
+
 
 	{% endfor %}
 

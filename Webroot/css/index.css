@@ -57,21 +57,31 @@ body {
         body main.admin .userList form.editUser.visible {
           display: flex; }
 
-.homeArticle article > div.ui.raised {
-  padding: 0; }
-  .homeArticle article > div.ui.raised img {
-    width: 100%; }
-  .homeArticle article > div.ui.raised > div.main-content {
-    padding: 2em; }
-    .homeArticle article > div.ui.raised > div.main-content > div:first-child h2:first-letter {
-      text-transform: capitalize; }
-    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.editDate {
-      color: rgba(0, 0, 0, 0.5);
-      font-style: italic; }
-    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.author {
-      margin-bottom: 0.2em; }
-    .homeArticle article > div.ui.raised > div.main-content > div:first-child p.content {
-      margin-top: 1em; }
+.homeArticle {
+  background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
+  .homeArticle article > div.ui.raised {
+    padding: 0; }
+    .homeArticle article > div.ui.raised img {
+      width: 100%; }
+    .homeArticle article > div.ui.raised > div.main-content {
+      padding: 2em; }
+      .homeArticle article > div.ui.raised > div.main-content > div:first-child h2 {
+        margin-bottom: 0.55em; }
+        .homeArticle article > div.ui.raised > div.main-content > div:first-child h2:first-letter {
+          text-transform: capitalize; }
+      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.editDate {
+        color: rgba(0, 0, 0, 0.5);
+        font-style: italic; }
+      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.author {
+        margin-bottom: 0.2em; }
+      .homeArticle article > div.ui.raised > div.main-content > div:first-child p.content {
+        margin-top: 1em; }
+      .homeArticle article > div.ui.raised > div.main-content > div:first-child .flexContainer.tags {
+        display: flex;
+        justify-content: space-between; }
 
 section.login.form, section.register.form {
   background-image: url(../../Webroot/Img/mononoke_by_etoli.jpg);
@@ -240,5 +250,9 @@ body {
 
 .error {
   color: tomato; }
+
+article {
+  padding-top: 100px;
+  margin-top: 0 !important; }
 
 /*# sourceMappingURL=index.css.map */

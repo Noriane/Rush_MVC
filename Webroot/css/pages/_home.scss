@@ -1,5 +1,9 @@
 .homeArticle
 {
+	background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 	article
 	{
 		>div.ui.raised
@@ -16,6 +20,7 @@
 				{
 					h2
 					{
+						margin-bottom:0.55em;
 						&:first-letter
 						{
 							text-transform:capitalize;
@@ -33,6 +38,11 @@
 					p.content
 					{
 						margin-top:1em;
+					}
+					.flexContainer.tags
+					{
+						display:flex;
+						justify-content: space-between;
 					}
 				}
 			}
