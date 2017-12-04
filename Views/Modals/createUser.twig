@@ -4,48 +4,57 @@
   <div class="header">
     Create a new user
   </div>
-  <div class="ui form">
-	<div class="fields">
-		<div class="field">
-		  <label>Name</label>
-		  <input type="text" placeholder="Name">
-		</div>
-		<div class="field">
-		  <label>Email</label>
-		  <input type="text" placeholder="Email">
-		</div>
+  <form class="ui form" method="post" action="admin">
+    <div class="fields">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" placeholder="Name" name="add_user[name]">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" placeholder="Email" name="add_user[email]">
+      </div>
 
-		<div class="field">
-		  <label>Group</label>
-		  <div class="ui selection dropdown">
-		      <input type="hidden" name="group">
-		      <i class="dropdown icon"></i>
-		      <div class="default text">Group</div>
-		      <div class="menu">
-		          <div class="item" data-value="0">Admin</div>
-		          <div class="item" data-value="1">Writer</div>
-		          <div class="item" data-value="2">User</div>
-		      </div>
-		  </div>
-		</div>
-		<div class="field">
-		  <label>Status</label>
-		  <div class="ui selection dropdown">
-		      <input type="hidden" name="group">
-		      <i class="dropdown icon"></i>
-		      <div class="default text">Status</div>
-		      <div class="menu">
-		          <div class="item" data-value="0">Allowed</div>
-		          <div class="item" data-value="1">Banished</div>
-		      </div>
-		  </div>
-		</div>
-	</div>
-</div>
-  <div class="actions">
-    <div class="ui button">Cancel</div>
-    <div class="ui button primary">Create</div>
-  </div>
+      <div class="field">
+        <label>password</label>
+        <input type="password" placeholder="password" name="add_user[password]"/>
+      </div>
+      <div class="field">
+        <label>password confirm</label>
+        <input type="password" placeholder="password confirm" name="add_user[password_confirm]"/>
+      </div>
+
+      <div class="field">
+        <label>Group</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="add_user[groupe]">
+          <i class="dropdown icon"></i>
+          <div class="default text">Group</div>
+          <div class="menu" >
+            <div class="item" data-value="ADMIN">Admin</div>
+            <div class="item" data-value="WRITER">Writer</div>
+            <div class="item" data-value="USER">User</div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="add_user[ban]">
+          <i class="dropdown icon"></i>
+          <div class="default text">Status</div>
+          <div class="menu">
+            <div class="item" data-value="0">Allowed</div>
+            <div class="item" data-value="1">Banished</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui button">Cancel</div>
+      <button class="ui button primary" type="submit" >Create</button>
+    </div>
+  </form>
 </div>
 
 {# End Create suer - Modal #}

@@ -16,7 +16,8 @@ class AdminModel extends AModel
         $pass = $user['password'];
         $email = $user['email'];
         $group = $user['groupe'];
-        $sql = "INSERT INTO users VALUES (null,'$name','$pass','$email','$group','0',NOW(),NOW()";
+        $ban = $user['ban'];
+        $sql = "INSERT INTO users VALUES (null,'$name','$pass','$email','$group','$ban',NOW(),NOW())";
 
         $this->_connect->setQuery($sql);
         $this->_connect->SQLquery(false);
