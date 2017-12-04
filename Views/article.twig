@@ -26,7 +26,7 @@
 		</div>
 		<div class="ui divider"></div>
 		<div class="topComments">
-			<p><span>{{article[0]['nb_comment'][0]['nb'] == null ? 0 : article[i]['nb_comment'][0]['nb'] }} </span>{{article[i]['nb_comment'][0]['nb'] == 1 ? "Comment" : "Comments"}}</p>
+			<p><span>{{comments['nb_comment'][0]['nb'] == null ? 0 : comments['nb_comment'][0]['nb'] }} </span>{{comments['nb_comment'][0]['nb'] == 1 ? "Comment" : "Comments"}}</p>
 			{# Add comments allowed for user loggued only #}
 			{% if user %}
 			<button class="ui button primary" id="newComment">Add new comment</button>
@@ -36,14 +36,15 @@
 		<form method="POST" action="{{path}}/articles/{{article[0]['id']}}" class="ui form addComments">
 			<div class="field">
 				<textarea name="add_comment[content]"></textarea>
+				<input type="hidden" value="{{article[0]['id']}}" name="add_comment[articles_id]">
 				<input class="ui button primary" id="addComment" type="submit" value="Ajouter">
 			</div>
 		</form>
-		<ul class="listComments">
+		<div class="listComments">
 			{% for i in 1..(comments|length - 1 )%}
-			<li>{{comments[0]['content']}}</li>
+			<div>{{comments[0]['content']}}</div>
 			{% endfor %}
-		</ul>
+		</div>
 	</div>
 </div>
 
