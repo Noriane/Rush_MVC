@@ -25,41 +25,57 @@ body
 	main
 	{
 	    padding: 0 3vw;
-	    h2.ui.header
+	    &.writer
 	    {
-	    	font-size: 1.4rem;
-	    }
-	    &.admin
-	    {
+    	    width: 60%;
+    		min-width: 1000px;
+    		margin:0 auto;
 	    	>button.ui.button
+
 	    	{
     		    margin: 21px auto 0 0;
     			display: block;
 	    	}
-			.userList
-			{
-				display: flex;
-				flex-wrap:wrap;
-				padding:0.5em;
-				.ui.card
+	    	.items
+	    	{
+    		    padding: 1.5em;
+    			margin: 0.85em 0 0;
+    			background-color:white;
+    			height: 170px;
+    			box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    			.item
+    			{
+    				height:100%;
+    				>.image
+    				{
+					    display: flex;
+					    align-items: center;
+					    justify-content: center;
+					    overflow: hidden;
+					    height: 100%;
+					    >img
+					    {
+				    	    height: 100%;
+    						width: auto;
+					    }
+    				}
+    			}
+				.article-title
 				{
-					margin:0 20px 20px 0;
-					.content:first-child
+					&:first-letter
 					{
-						display:flex;
-						justify-content: space-between;
-						align-items: center;
-						&:after
-						{
-							display:none;
-						}
+						text-transform: uppercase;
 					}
 				}
-				.ui.card + .ui.card
-				{
-					//margin-left:2em;
-				}
-			}
+	    	}
+	    	.comments
+	    	{
+    		    background-color: white;
+			    margin-bottom: 0.85em;
+			    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+			    padding: 1em 2em;
+			    text-align: right;
+	    	}
 	    }
 	}
 	//background-color:yellow;

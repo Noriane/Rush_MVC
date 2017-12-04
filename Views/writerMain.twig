@@ -3,6 +3,9 @@
 
 {% include 'Includes/header.twig' %}
 
+{# Confirm delete user - Modal #}
+{% include 'Modals/confirmDelArticle.twig' %}
+
 <div class="topContent writer">
 	<div class="ui search">
 		<div class="ui icon input">
@@ -16,34 +19,48 @@
 <main class="writer">
 	<button class="ui button primary create">Create a new article</button>
 
-	<ul class="userList">
-		{% for i in 0..(articles|length - 1) %}
+	{% for i in 0..(articles|length - 1) %}
 
-			<article>
-
-		<div class="ui raised very padded text container segment">
-			<div>
+	<div class="ui divided items">
+		<div class="item">
+			<div class="image">
 				<img src="{{articles[i]['url_img']}}">
 			</div>
-			<div>
-			    <h2 class="ui header">{{articles[i]['title']}}</h2>
-			    <p><span>{{articles[i]['username']}}</span> | <span>{{articles[i]['create_date']}}</span> | <span>{{articles[i]['edit_date']}}</span></p>
-			    <h3>{{articles[i]['cat']}}</h3>
-			    <p>{{articles[i]['content']}}</p>
-			</div>
-			<div>
-				<div>
-					<p>Tag1</p>
-					<p>Tag2</p>
-					<p>Tag3</p>
+			<div class="content">
+				<a class="article-title header">{{articles[i]['title']}}</a>
+				<div class="meta">
+					<span class="author">Writer : {{articles[i]['username']}}</span>
 				</div>
-				<p><span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>Comments</p>
-			</div>
-		 </div>
-	</article>
+				<div class="meta">
+					<span class="author">Create the : {{articles[i]['create_date'] | date("m/d/Y")}}</span><br>
+				</div>
+				
+				<div class="meta">
+					<span class="author">Last edit the : {{articles[i]['edit_date'] | date("m/d/Y")}}</span><br>
+				</div>
 
-		{% endfor %}
-	</ul>
+
+				<div class="extra">
+					<div class="ui right floated primary button">
+			          Edit
+						<i class="right chevron icon"></i>
+			        </div>
+			        <div class="ui right floated white button deleteArticle">
+			          Delete
+						<i class="right chevron icon"></i>
+			        </div>
+					<div class="ui label category {{articles[i]['cat']}}">{{articles[i]['cat']}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="comments">
+		<p>
+			<span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>{{articles['nb_comment'] > 1 ? "Comments" : "Comment"}}</p>
+			
+	</div>
+
+	{% endfor %}
 
 </main>
 

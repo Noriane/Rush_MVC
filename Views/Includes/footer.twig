@@ -1,11 +1,17 @@
 	
 		<script type="text/javascript">
-
+			/* user */
 			$(document).on("click", "button.edit", showModalEdit);
 			$(document).on("click", "button.create", showModalCreate);
 			$(document).on("click", "button.delete", showModalDelete);
+
+			/* Article */
+			$(document).on("click", ".button.deleteArticle", showModalDeleteArticle);
+
+			/* Search */ 
 			$("input[type='prompt']").on("keyup", displaySearch);
 			$('.ui.dropdown').dropdown();
+
 
 			function showModalEdit()
 			{
@@ -22,6 +28,12 @@
 			function showModalDelete()
 			{
 				$('.mini.modal').modal('show');
+			}
+
+			function showModalDeleteArticle()
+			{
+				$('#delArticle').modal({detachable: false});
+				$('#delArticle').modal('show');
 			}
 
 			function displaySearch()
