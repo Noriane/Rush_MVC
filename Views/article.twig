@@ -39,6 +39,11 @@
 				<input class="ui button primary" id="addComment" type="submit" value="Ajouter">
 			</div>
 		</form>
+		<ul class="listComments">
+			{% for i in 1..(comments|length - 1 )%}
+			<li>{{comments[0]['content']}}</li>
+			{% endfor %}
+		</ul>
 	</div>
 </div>
 
