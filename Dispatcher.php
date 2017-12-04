@@ -51,7 +51,7 @@ $router->get('/setting', function () {
     SettingController::getInstance("SettingModel", "setting.twig")->run();
 });
 
-$router->post('/settig', function () {
+$router->post('/setting', function () {
     require_once PATH."/Models/Setting.php";
     require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Controllers/SettingController.php";
@@ -76,13 +76,28 @@ $router->post('/writer', function () {
     WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
+
+/* TEMP */
+$router->get('/writerCreate', function () {
+    require_once PATH."/Models/Writer.php";
+    require_once PATH."/Controllers/WriterMainController.php";
+    require_once PATH."/Views/View.php";
+
+    WriterMainController::getInstance("WriterModel", "writerCreate.twig")->run();
+});
+/* END TEMP */
 $router->post('/writer/:id', function ($id) {
     require_once PATH."/Models/WriterArticle.php";
     require_once PATH."/Controllers/WriterMainController.php";
     require_once PATH."/Controllers/WriterArticleController.php";
     require_once PATH."/Views/View.php";
 
+<<<<<<< HEAD
     WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+=======
+    WriterMainController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+
+>>>>>>> 0b98e7c8d2f9f1f86308ebd8bc3d1aeef9c23af4
 });
 
 $router->get('/login', function () {

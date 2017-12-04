@@ -76,7 +76,8 @@ body {
       flex: 1; }
       body .topContent.writer .ui.search .ui.input {
         margin: 0 auto;
-        width: 40%; }
+        width: 100%;
+        max-width: 800px; }
   body main {
     padding: 0 3vw; }
     body main.writer {
@@ -114,6 +115,40 @@ body {
         padding: 0.8em 2em;
         text-align: right;
         color: rgba(0, 0, 0, 0.6); }
+      body main.writer.create form {
+        width: 100%;
+        max-width: 800px;
+        margin: 2em auto; }
+        body main.writer.create form .buttonsContainer {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 2em; }
+          body main.writer.create form .buttonsContainer button + button {
+            margin-left: 8px; }
+        body main.writer.create form .ui.form .field > label {
+          font-size: 1.2em;
+          margin-bottom: 13px; }
+        body main.writer.create form .ui.form textarea:not([rows]) {
+          height: 35em;
+          max-height: inherit; }
+        body main.writer.create form .flexContainer {
+          display: flex; }
+          body main.writer.create form .flexContainer .ui.selection.dropdown {
+            width: 40%; }
+          body main.writer.create form .flexContainer div.button.showForm {
+            margin-left: 8px; }
+          body main.writer.create form .flexContainer > .flexContainer {
+            display: none;
+            flex: 1;
+            margin-left: 2em; }
+            body main.writer.create form .flexContainer > .flexContainer.active {
+              display: flex; }
+            body main.writer.create form .flexContainer > .flexContainer input {
+              flex: 1; }
+            body main.writer.create form .flexContainer > .flexContainer div.button {
+              margin-left: 8px; }
+        body main.writer.create form .ui.divider {
+          margin-top: 2em; }
 
 .ui.modal .ui.form .fields {
   padding: 2em; }

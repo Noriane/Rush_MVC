@@ -18,7 +18,8 @@ body
     		.ui.input
     		{
     			margin: 0 auto;
-				width: 40%;
+				width: 100%;
+				max-width:800px;
     		}
     	}
     }
@@ -80,6 +81,70 @@ body
 			    padding: 0.8em 2em;
 			    text-align: right;
 			    color: rgba(0,0,0,.6);
+	    	}
+	    	&.create
+	    	{
+	    		form
+	    		{
+	    			width:100%;
+	    			max-width:800px;
+	    			margin:2em auto;
+	    			.buttonsContainer
+	    			{
+	    				display:flex;
+	    				justify-content: flex-end;
+	    				margin-top: 2em;
+	    				button + button
+	    				{
+	    					margin-left:8px;
+	    				}
+	    			}
+	    			.ui.form .field>label
+					{
+						font-size: 1.2em;
+						margin-bottom: 13px;
+					}
+					.ui.form textarea:not([rows])
+					{
+						height:35em;
+						max-height:inherit;
+					}
+					.flexContainer
+					{
+						display:flex;
+						.ui.selection.dropdown
+						{
+						    width: 40%;
+						}
+						div.button.showForm
+						{
+							margin-left:8px;
+						}
+						>.flexContainer
+						{
+							display:none;
+							flex:1;
+							margin-left:2em;
+							&.active
+							{
+								display:flex;
+							}
+							input
+							{
+								flex:1;
+							}
+							div.button
+							{
+								margin-left:8px;
+							}
+						}
+
+					}
+					.ui.divider
+					{
+						margin-top:2em;
+					}
+	    		}
 	    	}
 	    }
 	}
