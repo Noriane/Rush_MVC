@@ -1,0 +1,47 @@
+
+{% include 'Includes/head.twig' %}
+
+<section class="settings form">
+	<div class="ui middle aligned center aligned grid">
+	  <div class="column">
+	    <h1 class="ui teal image header">
+	        User Settings
+	    </h1>
+	    <h2>Please update your infos</h2>
+
+		<form class="ui large form" method="POST" action="{{path}}">
+			<div class="ui stacked segment">
+				<p class="error">{{session['message']}}</p>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="user icon"></i>
+				    <input type="text" name="modif_user[username]" placeholder="name" value="{{all_data_user[0]['username']}}">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="mail icon"></i>
+				    <input type="email" name="modif_user[email]" placeholder="Email" value="{{all_data_user[0]['email']}}">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="lock icon"></i>
+				    <input type="password" name="modif_user[password]" placeholder="Create a new password">
+				  </div>
+				</div>
+				<div class="field">
+				  <div class="ui left icon input">
+				    <i class="lock icon"></i>
+				    <input type="password" name="modif_user[password_confirm]" placeholder="Confirm your password">
+				  </div>
+				</div>
+				<input class="ui fluid large teal submit button primary" type="submit" value="Confirm">
+			</div>
+	    </form>
+	  </div>
+	</div>
+</section>
+
+
+{% include 'Includes/footer.twig' %}

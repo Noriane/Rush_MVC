@@ -28,7 +28,7 @@ class SettingController extends RegisterController
     {
         $email = $_POST['modif_user']['email'];
         $res = $this->_model->check_email($_POST['modif_user']['email']);
-
+        
         if (!empty($res)) {
             if ($res[0]['email'] == $email) {
                 $_SESSION['message'] = "This email is already taken";
