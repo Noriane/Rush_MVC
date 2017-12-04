@@ -2,11 +2,26 @@
 
 class ArticleController extends AppController
 {
+    protected function loadModel($model)
+    {
+        $this->_model = new $model();
+        require_once PATH."/Models/Comment.php";
+        $this->_modelComment = new CommentModel();
+    }
     protected function beforeRender()
     {
         global $id;
 
         $this->_params['data'] = $this->_model->article($id);
+
+        if (!empty($_POST['add_comment'])) {
+            $id_comment = ($this->add_comment());
+        }
+
+        //si reçois modif_comment avec les données nécessaires
+        if (!empty($_POST['modif_comment'])) {
+            $this->modif_comment();
+        }
 
         $this->_params['article']=[];
 
@@ -20,7 +35,7 @@ class ArticleController extends AppController
         if (!empty($this->_params['article']['nb_comment'])) {
             $this->_params['comments'] = [];
 
-            $this->_params['data'] = $this->_model->comments($id);
+            $this->_params['data'] = $this->_modelComment->comments($id);
 
             while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                 array_push($this->_params['comments'], $data);
