@@ -63,8 +63,12 @@ class WriterMainController extends WriterMainController
                     array_push($this->_params['article'], $data);
                 }
 
-                $this->_params['comments'] = $this->_modelComment->comments($id_article);
-                array_shift($this->_params);
+                $this->_params['data'] = $this->_modelComment->comments($id_article);
+
+                while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($this->_params['comments'], $data);
+                }
+                unset($this->_params['data']);
             }
         } else {
             $this->redirect();

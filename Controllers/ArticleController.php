@@ -27,6 +27,6 @@ class ArticleController extends AppController
             }
         }
 
-        array_shift($this->_params);
+        unset($this->_params['data']);
     }
 }
