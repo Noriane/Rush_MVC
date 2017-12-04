@@ -4,6 +4,9 @@ $(document).on("click", "button.edit", showEditForm);
 $(document).on("click", "button.create", showModalCreate);
 $(document).on("click", "div.showForm", showForm);
 $(document).on("click", "div.cancel", hideForm);
+$(document).on("click", "button#newComment", showFormComments);
+$(document).on("click", "button#addComment", displayComment);
+
 
 /* Article */
 $(document).on("click", ".button.deleteArticle", showModalDeleteArticle);
@@ -17,6 +20,17 @@ function showEditForm()
 {
 	$(this).parent().next('.editUser').addClass('visible');
 	$(this).closest("li").children('.content').addClass('hidden');
+}
+
+function showFormComments()
+{
+	$(this).parent().next('form').addClass('visible');
+}
+
+function displayComment()
+{
+	text = $(document).find(textarea).text();
+	$(document).find(".topComments").append("<li>"+text+"</li>");
 }
 
 function showModalCreate()

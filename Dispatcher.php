@@ -23,6 +23,14 @@ $router->get('/articles/:id', function ($id) {
     ArticleController::getInstance("ArticleModel", "article.twig",$id)->run();
 });
 
+$router->post('/articles/:id', function ($id) {
+    require_once PATH."/Models/Article.php";
+    require_once PATH."/Controllers/ArticleController.php";
+    require_once PATH."/Views/View.php";
+
+    ArticleController::getInstance("ArticleModel", "article.twig",$id)->run();
+});
+
 $router->get('/admin/:id', function ($id) {
     require_once PATH."/Models/Admin.php";
     require_once PATH."/Controllers/RegisterController.php";

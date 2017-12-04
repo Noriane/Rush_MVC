@@ -7,6 +7,7 @@
 .ui.main.text.container
 {
 	margin-top:5.5em;
+    min-height: 60vh;
 }
 
 .topComments
@@ -15,10 +16,15 @@
 	justify-content:space-between;
 }
 
-.addComments
+form.addComments
 {
+	display:none;
+	&.visible
+	{
+		display:block;
+	}
 	textarea
 	{
-		margin-bottom:20px;
+		margin:25px 0 !important;
 	}
 }

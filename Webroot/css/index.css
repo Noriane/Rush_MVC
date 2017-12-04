@@ -63,14 +63,19 @@ body {
   overflow: hidden; }
 
 .ui.main.text.container {
-  margin-top: 5.5em; }
+  margin-top: 5.5em;
+  min-height: 60vh; }
 
 .topComments {
   display: flex;
   justify-content: space-between; }
 
-.addComments textarea {
-  margin-bottom: 20px; }
+form.addComments {
+  display: none; }
+  form.addComments.visible {
+    display: block; }
+  form.addComments textarea {
+    margin: 25px 0 !important; }
 
 .homeArticle {
   background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
