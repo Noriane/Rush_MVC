@@ -76,6 +76,14 @@ $router->post('/writer', function () {
     WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
+$router->post('/writer/:id', function ($id) {
+    require_once PATH."/Models/WriterArticle.php";
+    require_once PATH."/Controllers/WriterArticleController.php";
+    require_once PATH."/Views/View.php";
+
+    WriterMainController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+});
+
 $router->get('/login', function () {
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";

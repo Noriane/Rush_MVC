@@ -18,21 +18,22 @@ class WriterMainController extends AppController
 
                     WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
                 });
-              exit();
+                exit();
             }
 
             //si reçois modif_article avec tous les champs user sauf password
             if (!empty($_POST['modif_article'])) {
-                $router = new Router("");
-
-                $router->post('/writer', function () {
-                    require_once PATH."/Models/WriterArticle.php";
-                    require_once PATH."/Controllers/WriterArticleController.php";
-                    require_once PATH."/Views/View.php";
-
-                    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
-                });
-                exit();
+                $this->redirect("POST", "writer/:id");
+                // $router = new Router("");
+                //
+                // $router->post('/writer', function () {
+                //     require_once PATH."/Models/WriterArticle.php";
+                //     require_once PATH."/Controllers/WriterArticleController.php";
+                //     require_once PATH."/Views/View.php";
+                //
+                //     WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+                // });
+                // exit();
             }
 
             //si reçois delete_article avec un id
