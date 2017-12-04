@@ -95,6 +95,15 @@ $router->post('/writer/:id', function ($id) {
     WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
 });
 
+$router->get('/writer/create', function () {
+    require_once PATH."/Models/WriterArticle.php";
+    require_once PATH."/Controllers/WriterMainController.php";
+    require_once PATH."/Controllers/WriterArticleController.php";
+    require_once PATH."/Views/View.php";
+
+    WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+});
+
 $router->get('/login', function () {
     require_once PATH."/Models/Login.php";
     require_once PATH."/Controllers/LoginController.php";
