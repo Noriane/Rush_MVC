@@ -28,21 +28,29 @@ class ArticleController extends AppController
         while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
             array_push($this->_params['article'], $data);
             $this->_params['article'][0]['nb_comment']= $this->_model->nb_comment($data['id']);
-$this->_params['article'][0]['tags']= $this->_model->tags($data['tag_id']);
-        }
 
-        $this->_params['data']= null;
+            $tag_temp  = $this->_model->tags($data['tag_id']);
 
-        if (!empty($this->_params['article']['nb_comment'])) {
-            $this->_params['comments'] = [];
-
-            $this->_params['data'] = $this->_modelComment->comments($id);
-
-            while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
-                array_push($this->_params['comments'], $data);
+            foreach ($tag_temp as $temp) {
+                while ($data_tag = $temp->fetch(PDO::FETCH_ASSOC)) {
+                    $this->_params['articles'][0]['tags'] = $data_tag;
+                }
             }
-        }
 
-        unset($this->_params['data']);
+
+            $this->_params['data']= null;
+
+            if (!empty($this->_params['article']['nb_comment'])) {
+                $this->_params['comments'] = [];
+
+                $this->_params['data'] = $this->_modelComment->comments($id);
+
+                while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($this->_params['comments'], $data);
+                }
+            }
+
+            unset($this->_params['data']);
+        }
     }
 }

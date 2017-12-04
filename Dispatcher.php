@@ -8,7 +8,6 @@ if (!empty($_GET['url'])) {
 
 
 $router->get('/', function () {
-    echo "Route / ";
     require_once PATH."/Models/Accueil.php";
     require_once PATH."/Controllers/AccueilController.php";
     require_once PATH."/Views/View.php";
