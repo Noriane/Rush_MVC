@@ -56,13 +56,14 @@ class WriterMainController extends WriterMainController
                 if (empty($id_article)) {
                     $id_article = $_POST['article_id'];
                 }
+
                 $this->_params['data'] = $this->_model->article($id_article);
 
                 $this->_params['article']['nb_comment'] = $this->_modelComment($id_article);
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['article'], $data);
                 }
-
+                $this->_params['article']['tags']= $this->_model->tags(tag_id);
                 $this->_params['data'] = $this->_modelComment->comments($id_article);
 
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
