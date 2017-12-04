@@ -51,7 +51,7 @@ $router->get('/setting', function () {
     SettingController::getInstance("SettingModel", "setting.twig")->run();
 });
 
-$router->post('/settig', function () {
+$router->post('/setting', function () {
     require_once PATH."/Models/Setting.php";
     require_once PATH."/Controllers/RegisterController.php";
     require_once PATH."/Controllers/SettingController.php";
@@ -74,6 +74,15 @@ $router->post('/writer', function () {
     require_once PATH."/Views/View.php";
 
     WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
+});
+
+/* TEMP */
+$router->get('/writerCreate', function () {
+    require_once PATH."/Models/Writer.php";
+    require_once PATH."/Controllers/WriterMainController.php";
+    require_once PATH."/Views/View.php";
+
+    WriterMainController::getInstance("WriterModel", "writerCreate.twig")->run();
 });
 
 $router->get('/login', function () {

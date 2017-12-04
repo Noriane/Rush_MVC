@@ -76,7 +76,8 @@ body {
       flex: 1; }
       body .topContent.writer .ui.search .ui.input {
         margin: 0 auto;
-        width: 40%; }
+        width: 100%;
+        max-width: 800px; }
   body main {
     padding: 0 3vw; }
     body main.writer {
@@ -114,6 +115,18 @@ body {
         padding: 0.8em 2em;
         text-align: right;
         color: rgba(0, 0, 0, 0.6); }
+      body main.writer.create > * {
+        width: 100%;
+        max-width: 800px;
+        margin: 2em auto; }
+        body main.writer.create > *.topButton {
+          display: flex;
+          justify-content: flex-end; }
+          body main.writer.create > *.topButton button + button {
+            margin-left: 8px; }
+      body main.writer.create form .ui.form .field > label {
+        font-size: 1.2em;
+        margin-bottom: 13px; }
 
 .ui.modal .ui.form .fields {
   padding: 2em; }

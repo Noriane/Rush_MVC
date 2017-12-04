@@ -18,7 +18,8 @@ body
     		.ui.input
     		{
     			margin: 0 auto;
-				width: 40%;
+				width: 100%;
+				max-width:800px;
     		}
     	}
     }
@@ -80,6 +81,32 @@ body
 			    padding: 0.8em 2em;
 			    text-align: right;
 			    color: rgba(0,0,0,.6);
+	    	}
+	    	&.create
+	    	{
+	    		>*
+	    		{
+	    			width:100%;
+	    			max-width:800px;
+	    			margin:2em auto;
+	    			&.topButton
+	    			{
+	    				display:flex;
+	    				justify-content: flex-end;
+	    				button + button
+	    				{
+	    					margin-left:8px;
+	    				}
+	    			}
+	    		}
+	    		form
+	    		{
+	    			.ui.form .field>label
+					{
+						font-size: 1.2em;
+						margin-bottom: 13px;
+					}
+	    		}
 	    	}
 	    }
 	}
