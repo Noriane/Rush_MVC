@@ -16,7 +16,7 @@ class WriterArticleController extends WriterMainController
         //verif si c'est un admin ou un writer
         if ((($this->_params['user']['group'] == "ADMIN") || ($this->_params['user']['group'] == "WRITER")) && ($this->_params['user']['ban'] == false)) {
 
-          global $id;
+        global $id;
 
               //si reçois add_article avec toutes les données nécessaires
             if (!empty($_POST['add_categorie'])) {
@@ -53,7 +53,7 @@ class WriterArticleController extends WriterMainController
                 $this->delete_comment();
             }
 
-            if (!empty($_POST['article_id']) || !empty($id_article)) {
+            if (!empty($id) || !empty($id_article)) {
                 //envois les données de la bdd articles pour la view
                 if (empty($id_article)) {
                     $id_article = $_POST['article_id'];
@@ -61,16 +61,22 @@ class WriterArticleController extends WriterMainController
 
                 $this->_params['data'] = $this->_model->article($id_article);
 
-                $this->_params['article']['nb_comment'] = $this->_modelComment($id_article);
+                $this->_params['article']['nb_comment'] = $this->_modelComment->nb_comment($id_article);
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['article'], $data);
                 }
-                $this->_params['article']['tags']= $this->_model->tags(tag_id);
+                $this->_params['article']['tags']= $this->_model->tags($this->_params['article']['tag_id']);
                 $this->_params['data'] = $this->_modelComment->comments($id_article);
 
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['comments'], $data);
                 }
+
+                $this->_params['data'] = $this->_model->categories();
+                while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($this->_params['categories'], $data);
+                }
+
                 unset($this->_params['data']);
             }
         } else {
