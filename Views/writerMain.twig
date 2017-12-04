@@ -42,16 +42,16 @@
 
 
 				<form class="extra" method="POST" action="writer">
-					<div class="ui right floated primary button">
+					<div class="ui right floated">
 
 			        	<input type="hidden" value="{{articles[i]['id']}}" name="modif_article">
-			          <input type="submit" value="Edit" name="submit">
+			          <input type="submit" value="Edit" name="submit" class="ui button primary">
 
-						<i class="right chevron icon"></i>
+
 			        </div>
 			        <div class="ui right floated white button deleteArticle">
 			          Delete
-						<i class="right chevron icon"></i>
+
 			        </div>
 					<div class="ui label category {{articles[i]['cat']}}">{{articles[i]['cat']}}</div>
 				</div>
