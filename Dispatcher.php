@@ -92,12 +92,7 @@ $router->post('/writer/:id', function ($id) {
     require_once PATH."/Controllers/WriterArticleController.php";
     require_once PATH."/Views/View.php";
 
-<<<<<<< HEAD
     WriterArticleController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
-=======
-    WriterMainController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
-
->>>>>>> 0b98e7c8d2f9f1f86308ebd8bc3d1aeef9c23af4
 });
 
 $router->get('/login', function () {
