@@ -16,8 +16,6 @@ class WriterArticleController extends WriterMainController
         //verif si c'est un admin ou un writer
         if ((($this->_params['user']['group'] == "ADMIN") || ($this->_params['user']['group'] == "WRITER")) && ($this->_params['user']['ban'] == false)) {
 
-        global $id;
-
               //si reçois add_article avec toutes les données nécessaires
             if (!empty($_POST['add_categorie'])) {
                 $cat = $this->add_categorie();
@@ -53,10 +51,10 @@ class WriterArticleController extends WriterMainController
                 $this->delete_comment();
             }
 
-            if (!empty($id) || !empty($id_article)) {
+            if (!empty($this->id) || !empty($id_article)) {
                 //envois les données de la bdd articles pour la view
                 if (empty($id_article)) {
-                    $id_article = $_POST['article_id'];
+                    $id_article = $this->_id;
                 }
 
                 $this->_params['data'] = $this->_model->article($id_article);
@@ -78,6 +76,7 @@ class WriterArticleController extends WriterMainController
                 }
 
                 $this->_params['data'] = $this->_model->categories();
+                var_dump($data);
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['categories'], $data);
                 }
