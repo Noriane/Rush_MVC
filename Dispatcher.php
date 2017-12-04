@@ -76,6 +76,7 @@ $router->post('/writer', function () {
     WriterMainController::getInstance("WriterModel", "writerMain.twig")->run();
 });
 
+
 /* TEMP */
 $router->get('/writerCreate', function () {
     require_once PATH."/Models/Writer.php";
@@ -83,6 +84,15 @@ $router->get('/writerCreate', function () {
     require_once PATH."/Views/View.php";
 
     WriterMainController::getInstance("WriterModel", "writerCreate.twig")->run();
+});
+/* END TEMP */
+$router->post('/writer/:id', function ($id) {
+    require_once PATH."/Models/WriterArticle.php";
+    require_once PATH."/Controllers/WriterArticleController.php";
+    require_once PATH."/Views/View.php";
+
+    WriterMainController::getInstance("WriterArticleModel", "writerArticle.twig")->run();
+
 });
 
 $router->get('/login', function () {
