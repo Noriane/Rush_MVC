@@ -25,9 +25,16 @@
 		    <p class="content">{{article[0]['content']}}</p>
 		</div>
 		<div class="ui divider"></div>
-		<div>
+		<div class="topComments">
 			<p><span>{{article['nb_comment'] == null ? 0 : article['nb_comment']}} </span>Comments</p>
+			{# Add comments allowed for user loggued only #}
+			{% if user %}
+			<button class="ui button primary">Add new comment</button>
+			{% endif %}
+
 		</div>
+		<form>
+		</form>
 	</div>
 </div>
 

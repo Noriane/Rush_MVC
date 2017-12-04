@@ -68,6 +68,10 @@ body {
 .ui.main.text.container {
   margin-top: 5.5em; }
 
+.topComments {
+  display: flex;
+  justify-content: space-between; }
+
 .homeArticle {
   background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
   background-repeat: no-repeat;
