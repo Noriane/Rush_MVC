@@ -2,9 +2,9 @@
 
 class CommentModel extends AModel
 {
-    public function comments()
+    public function comments($id)
     {
-        $sql= "SELECT comments.id, title, users.username, categories.name as 'cat', CONCAT('Webroot/Img/',url_img) as 'url_img',comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id INNER JOIN categories ON comments.categories_id = categories.id ORDER BY comments.id DESC;";
+        $sql= "SELECT comments.id, content, users.username,comments.create_date, comments.edit_date FROM comments INNER JOIN users ON comments.author_id = users.id INNER JOIN categories ON comments.categories_id = categories.id WHERE articles_id = '$id' ORDER BY comments.id DESC;";
 
         $this->_connect->setQuery($sql);
         return $this->_connect->SQLquery(false);
