@@ -1,6 +1,6 @@
 
 /* user */
-$(document).on("click", "button.edit", showModalEdit);
+$(document).on("click", "button.edit", showEditForm);
 $(document).on("click", "button.create", showModalCreate);
 $(document).on("click", "div.showForm", showForm);
 $(document).on("click", "div.cancel", hideForm);
@@ -13,16 +13,16 @@ $("input[type='prompt']").on("keyup", displaySearch);
 $('.ui.dropdown').dropdown();
 
 
-function showModalEdit()
+function showEditForm()
 {
-		$('#editModal').modal({detachable: false});
-		$('#editModal').modal('show');
+	$(this).parent().next('.editUser').addClass('visible');
+	$(this).closest("li").children('.content').addClass('hidden');
 }
 
 function showModalCreate()
 {
-		$('#createModal').modal({detachable: false});
-		$('#createModal').modal('show');
+	$('#createModal').modal({detachable: false});
+	$('#createModal').modal('show');
 }
 
 function showModalDeleteArticle()

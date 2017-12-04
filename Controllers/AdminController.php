@@ -16,9 +16,9 @@ class AdminController extends RegisterController
             if (!empty($_POST['modif_user'])) {
                 $this->modif_user();
             }
-            global $id;
+
             //si reçois delete_users avec un id
-            if (!empty($_GET['delete_user'])) {
+            if (!empty($_POST['delete_user'])) {
                 $this->delete_user();
             }
 
@@ -72,9 +72,9 @@ class AdminController extends RegisterController
 
     private function delete_user()
     {
-        $id = $_GET['delete_user'];
+        $id = $_POST['delete_user'];
         $check_admin = new log($id);
-        if ($check_admin->is_group() != "ADMIN") {
+        if ($check_admin != "ADMIN") {
             $this->_model->delete_user($id);
         }
     }

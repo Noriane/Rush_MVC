@@ -3,8 +3,6 @@
 
 {% include 'Includes/header.twig' %}
 
-{# Edit user infos for Admin - Modal #}
-{% include 'Modals/editUser.twig' %}
 
 {# Confirm create user - Modal #}
 {% include 'Modals/createUser.twig' %}
@@ -63,9 +61,46 @@
 				    </div>
 				  </div>
 				  <div class="extra content">
-				    <button class="ui button edit">Edit</p>
-					<button class="ui button delete"><a href="admin?delete_user={{users[i]['id']}}">Delete</a></p>
+				    <button class="ui button edit">Edit</button>
+					<button class="ui button delete"><a href="admin?delete_user={{users[i]['id']}}">Delete</a></button>
 				  </div>
+				  <form class="editUser ui form" method="POST" action="admin">
+				  	<div class="fields input">
+					  	<input type="text" name="modif_user[username]" class="field" value="{{users[i]['username']}}">
+					  	<input type="text" name="modif_user[email]" value="{{users[i]['email']}}">
+				  	</div>
+				  	<div class="fields drop">
+					  <div class="field">
+
+						  <div class="ui selection dropdown">
+						      <input type="hidden" name="modif_user[groupe]">
+						      <i class="dropdown icon"></i>
+						      <div class="default text">Groupe</div>
+						      <div class="menu">
+						          <div class="item" data-value="ADMIN">Admin</div>
+						          <div class="item" data-value="WRITER">Writer</div>
+						          <div class="item" data-value="USER">User</div>
+						      </div>
+						  </div>
+						</div>
+					  	<div class="field">
+						  <div class="ui selection dropdown">
+						      <input type="hidden" name="modif_user[ban]">
+						      <i class="dropdown icon"></i>
+						      <div class="default text">Status</div>
+						      <div class="menu">
+						          <div class="item" data-value="0">Allowed</div>
+						          <div class="item" data-value="1">Banished</div>
+						      </div>
+						  </div>
+				  		</div>
+					</div>
+
+				  	<div class="extra content">
+					    <button class="ui button cancel">Cancel</button>
+						<input class=" ui button primary" type="submit" value="Save"></button>
+					</div>
+				  </form>
 				</li>
 
 			{% endif %}
