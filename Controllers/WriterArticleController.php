@@ -58,7 +58,7 @@ class WriterMainController extends WriterMainController
                 }
                 $this->_params['data'] = $this->_model->article($id_article);
 
-                $this->_params['article']=[];
+                $this->_params['article']['nb_comment'] = $this->_modelComment($id_article);
                 while ($data = $this->_params['data']->fetch(PDO::FETCH_ASSOC)) {
                     array_push($this->_params['article'], $data);
                 }
