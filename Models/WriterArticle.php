@@ -12,9 +12,10 @@ class WriterArticleModel extends AModel
 
     public function categories()
     {
-      $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM categories";
 
-
+        $this->_connect->setQuery($sql);
+        return $this->_connect->SQLquery(false);
     }
 
     public function add_article($article)
@@ -43,12 +44,12 @@ class WriterArticleModel extends AModel
 
     public function add_tag($tag)
     {
-      $name = $tag['name'];
+        $name = $tag['name'];
 
-      $sql = "INSERT INTO tags VALUES (null,'$name')";
+        $sql = "INSERT INTO tags VALUES (null,'$name')";
 
-      $this->_connect->setQuery($sql);
-      $this->_connect->SQLquery(false);
+        $this->_connect->setQuery($sql);
+        $this->_connect->SQLquery(false);
     }
 
 
