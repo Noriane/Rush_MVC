@@ -12,11 +12,27 @@
 			>div.main-content
 			{
 				padding:2em;
-				h2
+				>div:first-child
 				{
-					&:first-letter
+					h2
 					{
-						text-transform:capitalize;
+						&:first-letter
+						{
+							text-transform:capitalize;
+						}
+					}
+					p.editDate
+					{
+						color:rgba(0, 0, 0, 0.5);
+						font-style: italic;
+					}
+					p.author
+					{
+						margin-bottom:0.2em;
+					}
+					p.content
+					{
+						margin-top:1em;
 					}
 				}
 			}
