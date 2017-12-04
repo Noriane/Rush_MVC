@@ -9,11 +9,10 @@ class View
         $params['session'] = $_SESSION; 
         
         $params['path'] = BASE_URL;
-
         /*
         echo "<pre>";
         var_dump($params);
-        echo "<pre>";
+        echo "</pre>";
         */
 
         $template = $twig->loadTemplate($file);
