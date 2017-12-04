@@ -77,7 +77,7 @@ $router->post('/writer', function () {
 });
 
 
-/* TEMP */
+/* 
 $router->get('/writerCreate', function () {
     require_once PATH."/Models/Writer.php";
     require_once PATH."/Controllers/WriterMainController.php";
@@ -85,7 +85,7 @@ $router->get('/writerCreate', function () {
 
     WriterMainController::getInstance("WriterModel", "writerCreate.twig")->run();
 });
-/* END TEMP */
+ */
 $router->post('/writer/:id', function ($id) {
     require_once PATH."/Models/WriterArticle.php";
     require_once PATH."/Controllers/WriterMainController.php";
