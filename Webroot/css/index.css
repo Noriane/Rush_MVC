@@ -138,11 +138,11 @@ body {
           body main.writer.create form .flexContainer div.button.showForm {
             margin-left: 8px; }
           body main.writer.create form .flexContainer > .flexContainer {
-            display: none;
-            flex: 1;
-            margin-left: 2em; }
+            flex: 1; }
             body main.writer.create form .flexContainer > .flexContainer.active {
               display: flex; }
+            body main.writer.create form .flexContainer > .flexContainer.hidden {
+              display: none; }
             body main.writer.create form .flexContainer > .flexContainer input {
               flex: 1; }
             body main.writer.create form .flexContainer > .flexContainer div.button {
