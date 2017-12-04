@@ -25,6 +25,11 @@
 		    <p class="content">{{article[0]['content']}}</p>
 		</div>
 		<div class="ui divider"></div>
+		<div class="listComments">
+			{% for k in 0..(comments|length - 1 )%}
+			<div>{{comments[k]['content']}}</div>
+			{% endfor %}
+		</div>
 		<div class="topComments">
 			<p><span>{{comments['nb_comment'][0]['nb'] == null ? 0 : comments['nb_comment'][0]['nb'] }} </span>{{comments['nb_comment'][0]['nb'] == 1 ? "Comment" : "Comments"}}</p>
 			{# Add comments allowed for user loggued only #}
@@ -40,11 +45,6 @@
 				<input class="ui button primary" id="addComment" type="submit" value="Ajouter">
 			</div>
 		</form>
-		<div class="listComments">
-			{% for i in 1..(comments|length - 1 )%}
-			<div>{{comments[0]['content']}}</div>
-			{% endfor %}
-		</div>
 	</div>
 </div>
 
