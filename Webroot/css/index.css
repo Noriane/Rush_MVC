@@ -125,6 +125,8 @@ section.login.form, section.register.form, section.settings.form {
 
 body {
   background-color: #f7f7f7; }
+  body .ui.button.primary.create a {
+    color: white; }
   body .topContent.writer {
     padding-top: 2em;
     display: flex;
