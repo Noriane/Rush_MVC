@@ -24,6 +24,15 @@ $router->get('/articles/:id', function ($id) {
     ArticleController::getInstance("ArticleModel", "article.twig")->run();
 });
 
+$router->get('/admin/:id', function ($id) {
+    require_once PATH."/Models/Admin.php";
+    require_once PATH."/Controllers/RegisterController.php";
+    require_once PATH."/Controllers/AdminController.php";
+    require_once PATH."/Views/View.php";
+
+    AdminController::getInstance("AdminModel", "admin.twig")->run();
+});
+
 $router->get('/admin', function () {
     require_once PATH."/Models/Admin.php";
     require_once PATH."/Controllers/RegisterController.php";
@@ -77,7 +86,7 @@ $router->post('/writer', function () {
 });
 
 
-/* 
+/*
 $router->get('/writerCreate', function () {
     require_once PATH."/Models/Writer.php";
     require_once PATH."/Controllers/WriterMainController.php";
