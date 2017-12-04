@@ -1,36 +1,36 @@
 <!-- HEADER -->
 <div class="ui fixed inverted menu">
-	<div class="ui container">
-	  <a href="#" class="header item">
-	    <img class="logo" src="assets/images/logo.png">
-	    Blogblogblog
-	  </a>
-	  <a href="#" class="item">Home</a>
-	  <div class="ui simple dropdown item">
-	    Categories <i class="dropdown icon"></i>
-	    <div class="menu">
-	      <a class="item" href="#">Link Item</a>
-	      <a class="item" href="#">Link Item</a>
-	      <div class="divider"></div>
-	      <div class="header">Header Item</div>
-	      <div class="item">
-	        <i class="dropdown icon"></i>
-	        Sub Menu
-	        <div class="menu">
-	          <a class="item" href="#">Link Item</a>
-	          <a class="item" href="#">Link Item</a>
-	        </div>
-	      </div>
-	      <a class="item" href="#">Link Item</a>
-	    </div>
-	  </div>
+  <div class="ui container">
+    <a href="{{path}}" class="header item">
+      <img class="logo" src="assets/images/logo.png">
+      Miyazaki Fan-blog
+    </a>
+    <a href="{{path}}" class="item">Home</a>
+{% if session['groupe'] == 'ADMIN' or  session['groupe'] == 'WRITER' or  session['groupe'] == 'USER'%}
+    <a class="item" href="{{path}}/Setting">Setting</a>
+{% endif %}
+    {% if session['groupe'] == 'ADMIN' or  session['groupe'] == 'WRITER'%}
+      <div class="ui simple dropdown item">
+        Controller
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {% if session['groupe'] == 'ADMIN' %}
+            <a href="{{path}}/admin" class="item">Admin</a>
+          {% endif %}
+          <div class="divider"></div>
+          <div class="header">Writer</div>
+          <a href="{{path}}/writer/create" class="item">Write a new article</a>
+          <a href="{{path}}/writer" class="item">Manage article</a>
+        </div>
+      </div>
+    {% endif %}
 
-	  {% if session['groupe'] == 'ADMIN' %}
-	  	<a href="admin" class="item">Admin</a>
-	  {% endif %}
+		{% if (session['groupe'] == 'ADMIN' or  session['groupe'] == 'WRITER' or  session['groupe'] == 'USER')%}
+		<a class="item" href="{{path}}/logout">Logout</a>
+		{% else %}
+		<a class="item" href="{{path}}/login">Login</a>
+		{% endif %}
 
-	  {% if session['groupe'] == 'ADMIN' or  session['groupe'] == 'WRITER'%}
-	  	<a href="#" class="item">Write a new artcile</a>
-	  {% endif %}
-	</div>
+  </div>
+</div>
 </div>

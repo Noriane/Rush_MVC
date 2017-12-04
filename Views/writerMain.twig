@@ -17,7 +17,7 @@
 </div>
 
 <main class="writer">
-	<button class="ui button primary create"><a href="writer/create">Create a new article</a></button>
+	<button class="ui button primary create"><a href="{{path}}/writer/create">Create a new article</a></button>
 
 	{% for i in 0..(articles|length - 1) %}
 
@@ -43,7 +43,7 @@
 
 				<form class="extra" method="POST" action="writer">
 					<div class="ui right floated primary button">
-	
+
 			        	<input type="hidden" value="{{articles[i]['id']}}" name="modif_article">
 			          <input type="submit" value="Edit" name="submit">
 
@@ -61,7 +61,7 @@
 	<div class="comments">
 		<p>
 			<span>{{articles['nb_comment'] == null ? 0 : articles['nb_comment']}} </span>{{articles['nb_comment'] > 1 ? "Comments" : "Comment"}}</p>
-			
+
 	</div>
 
 	{% endfor %}
@@ -69,4 +69,3 @@
 </main>
 
 {% include 'Includes/footer.twig' %}
-
