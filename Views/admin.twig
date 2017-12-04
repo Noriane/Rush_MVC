@@ -6,13 +6,8 @@
 {# Edit user infos for Admin - Modal #}
 {% include 'Modals/editUser.twig' %}
 
-{# Confirm delete user - Modal #}
-{% include 'Modals/confirmDelUser.twig' %}
-
 {# Confirm create user - Modal #}
 {% include 'Modals/createUser.twig' %}
-
-
 
 <!--<h1>Manage users</h1>-->
 <div class="topContent admin">
@@ -69,7 +64,7 @@
 				  </div>
 				  <div class="extra content">
 				    <button class="ui button edit">Edit</p>
-					<button class="ui button delete">Delete</p>
+					<button class="ui button delete"><a href="admin?delete_user={{users[i]['id']}}">Delete</a></p>
 				  </div>
 				</li>
 
@@ -116,7 +111,7 @@
 					  </div>
 					  <div class="extra content">
 					    <button class="ui button edit">Edit</p>
-						<button class="ui button delete">Delete</p>
+						<button class="ui button delete"><a href="admin?delete_user={{users[i]['id']}}">Delete</a></p>
 					  </div>
 					</li>
 			{% endif %}
@@ -162,7 +157,7 @@
 					  </div>
 					  <div class="extra content">
 					    <button class="ui button edit">Edit</p>
-						<button class="ui button delete">Delete</p>
+						<button class="ui button delete"><a href="admin?delete_user={{users[i]['id']}}">Delete</a></p>
 					  </div>
 					</li>
 			{% endif %}

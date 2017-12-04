@@ -2,7 +2,6 @@
 /* user */
 $(document).on("click", "button.edit", showModalEdit);
 $(document).on("click", "button.create", showModalCreate);
-$(document).on("click", "button.delete", showModalDelete);
 $(document).on("click", "div.showForm", showForm);
 $(document).on("click", "div.cancel", hideForm);
 
@@ -24,11 +23,6 @@ function showModalCreate()
 {
 		$('#createModal').modal({detachable: false});
 		$('#createModal').modal('show');
-}
-
-function showModalDelete()
-{
-	$('.mini.modal').modal('show');
 }
 
 function showModalDeleteArticle()
