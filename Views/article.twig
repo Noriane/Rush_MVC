@@ -33,7 +33,12 @@
 			{% endif %}
 
 		</div>
-		<form>
+		<form method="POST" action="" class="ui form addComments">
+			<div class="field">
+				<textarea name="add_comment[content]"></textarea>
+				<input class="ui button primary" type="submit" value="Ajouter">
+				<button class="ui button">Cancel</button>
+			</div>
 		</form>
 	</div>
 </div>
