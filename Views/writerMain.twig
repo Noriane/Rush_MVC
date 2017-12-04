@@ -34,15 +34,19 @@
 				<div class="meta">
 					<span class="author">Create the : {{articles[i]['create_date'] | date("m/d/Y")}}</span><br>
 				</div>
-				
-				<div class="meta">
+
+				 <div class="meta {{(articles[i]['edit_date']) !=  (articles[i]['create_date']) ? "visible" : "hidden"}}">
+
 					<span class="author">Last edit the : {{articles[i]['edit_date'] | date("m/d/Y")}}</span><br>
 				</div>
 
 
-				<div class="extra">
+				<form class="extra" method="POST" action="writer">
 					<div class="ui right floated primary button">
-			          Edit
+	
+			        	<input type="hidden" value="{{articles[i]['id']}}" name="modif_article">
+			          <input type="submit" value="Edit" name="submit">
+
 						<i class="right chevron icon"></i>
 			        </div>
 			        <div class="ui right floated white button deleteArticle">

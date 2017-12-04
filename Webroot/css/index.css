@@ -84,11 +84,13 @@ body {
       min-width: 1000px;
       margin: 0 auto; }
       body main.writer > button.ui.button {
-        margin: 21px auto 0 0;
+        margin: 21px 0 0 auto;
         display: block; }
+      body main.writer button + .items {
+        margin-top: 2em; }
       body main.writer .items {
         padding: 1.5em;
-        margin: 0.85em 0 0;
+        margin: 1em 0 0;
         background-color: white;
         height: 170px;
         box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5; }
@@ -109,8 +111,9 @@ body {
         background-color: white;
         margin-bottom: 0.85em;
         box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-        padding: 1em 2em;
-        text-align: right; }
+        padding: 0.8em 2em;
+        text-align: right;
+        color: rgba(0, 0, 0, 0.6); }
 
 .ui.modal .ui.form .fields {
   padding: 2em; }
@@ -144,6 +147,9 @@ body {
 .category.event {
   background-color: purple;
   color: white; }
+
+.hidden {
+  display: none; }
 
 .error {
   color: tomato; }
