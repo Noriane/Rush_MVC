@@ -48,7 +48,7 @@ class WriterMainController extends AppController
                 $this->_params['articles'][$i]['nb_comment']= $this->_model->nb_comment($data['id']);
                 $i++;
             }
-            array_shift($this->_params);
+            unset($this->_params['data']);
         } else {
             $this->redirect();
         }
