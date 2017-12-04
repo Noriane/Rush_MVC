@@ -69,6 +69,9 @@ body {
   display: flex;
   justify-content: space-between; }
 
+.addComments textarea {
+  margin-bottom: 20px; }
+
 .homeArticle {
   background-image: url(../../Webroot/Img/mononoke_by_etoli2.png);
   background-repeat: no-repeat;
